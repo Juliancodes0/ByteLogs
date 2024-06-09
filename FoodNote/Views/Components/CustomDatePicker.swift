@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-protocol CustomDatePickerDelegate {
-    
-}
-
 struct CustomDatePicker: View {
     @Binding var date: Date
     @Binding var buttonShouldBeActive: Bool
