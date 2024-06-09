@@ -30,8 +30,8 @@ struct CustomDatePicker: View {
                 .padding()
 
                 .onChange(of: date) { oldValue, newValue in
-                    self.convertToDateToggleView = false
                     withAnimation {
+                        self.convertToDateToggleView = false
                         self.opacityIsMuted = false
                     }
                 }
@@ -55,7 +55,9 @@ extension CustomDatePicker {
                 .disabled(!buttonShouldBeActive)
 
             Button(action: {
-                convertToDateToggleView = true
+                withAnimation {
+                    convertToDateToggleView = true
+                }
                 withAnimation {
                     self.opacityIsMuted = true
                 }
