@@ -28,7 +28,12 @@ struct CustomDatePicker: View {
                 .datePickerStyle(.wheel)
                 .labelsHidden()
                 .padding()
-
+                .onTapGesture {
+                    withAnimation {
+                        self.convertToDateToggleView = false
+                        self.opacityIsMuted = false
+                    }
+                }
                 .onChange(of: date) { oldValue, newValue in
                     withAnimation {
                         self.convertToDateToggleView = false
