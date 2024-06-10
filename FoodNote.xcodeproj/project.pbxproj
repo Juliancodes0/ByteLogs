@@ -12,6 +12,7 @@
 		0542642E2C0CAF3A00DCE34A /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542642D2C0CAF3A00DCE34A /* HapticManager.swift */; };
 		054C88762C1020CA00C9FF87 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88752C1020CA00C9FF87 /* Sequence+Extensions.swift */; };
 		056DC6BE2C116DF6008A200E /* MealReloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056DC6BD2C116DF6008A200E /* MealReloaderDelegate.swift */; };
+		059B6BE82C164D1000AD5257 /* UnitOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059B6BE72C164D1000AD5257 /* UnitOptionsViewController.swift */; };
 		05D14BEB2C0A99A6005D1047 /* FoodNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14BEA2C0A99A6005D1047 /* FoodNoteApp.swift */; };
 		05D14BED2C0A99A6005D1047 /* StartingHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14BEC2C0A99A6005D1047 /* StartingHostView.swift */; };
 		05D14BEF2C0A99A7005D1047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D14BEE2C0A99A7005D1047 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		0542642D2C0CAF3A00DCE34A /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		054C88752C1020CA00C9FF87 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		056DC6BD2C116DF6008A200E /* MealReloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReloaderDelegate.swift; sourceTree = "<group>"; };
+		059B6BE72C164D1000AD5257 /* UnitOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOptionsViewController.swift; sourceTree = "<group>"; };
 		05D14BE72C0A99A6005D1047 /* FoodNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D14BEA2C0A99A6005D1047 /* FoodNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNoteApp.swift; sourceTree = "<group>"; };
 		05D14BEC2C0A99A6005D1047 /* StartingHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingHostView.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				05D14C272C0A9DDC005D1047 /* FoodDetailedRowView.swift */,
 				05D14C292C0A9DFC005D1047 /* CategoryOptionsSubview.swift */,
 				052263022C0CE968002095CA /* FoodRow.swift */,
+				059B6BE72C164D1000AD5257 /* UnitOptionsViewController.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				05D14C342C0A9E76005D1047 /* LoggedWeightModel.swift in Sources */,
 				05D14C1A2C0A9D3D005D1047 /* AddFoodSheet.swift in Sources */,
 				05D14C0E2C0A9C5D005D1047 /* CoreDataManager.swift in Sources */,
+				059B6BE82C164D1000AD5257 /* UnitOptionsViewController.swift in Sources */,
 				05D14C2E2C0A9E33005D1047 /* User.swift in Sources */,
 				05D14C322C0A9E5F005D1047 /* MealModel.swift in Sources */,
 				052263012C0CE6AA002095CA /* DeletionProtocol.swift in Sources */,
