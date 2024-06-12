@@ -8,7 +8,11 @@
 import UIKit
 import SwiftUI
 
-class InfoSheetViewController: UIViewController {
+protocol ReloadStringDataDelegate: AnyObject {
+    func reloadStringData ()
+}
+
+class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
     
     let user = User()
     var seguedFromSettings: Bool = false
@@ -22,6 +26,8 @@ class InfoSheetViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var userUnitPreference: String = "LBS"
+    
     private lazy var enterInfoTextLabel: UILabel = {
        let label = UILabel()
         label.text = !self.seguedFromSettings ? "Enter some info about you" : "Update weight"
@@ -34,7 +40,7 @@ class InfoSheetViewController: UIViewController {
     
     private lazy var weightTextField: UITextField = {
        let textField = UITextField()
-        textField.placeholder = "LBS"
+        textField.placeholder = self.userUnitPreference
         textField.textColor = UIColor.black
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -93,6 +99,17 @@ class InfoSheetViewController: UIViewController {
         label.alpha = 0
         return label
     }()
+    
+    func reloadStringData() {
+        self.weightTextField.placeholder = switch user.getUnitPreference() {
+        case .lbs:
+            "LBS"
+        case .kg:
+            "KG"
+        case .stone:
+            "Stone"
+        }
+    }
     
     var showErrorLabel: Bool = false
 
@@ -165,11 +182,13 @@ class InfoSheetViewController: UIViewController {
     
     @objc func presentUnitOptionsViewController () {
         let vc = UnitOptionsViewController(user: user)
+        vc.delegate = self
         vc.modalPresentationStyle = .popover
         present(vc, animated: true)
     }
     
     func setup () {
+        reloadStringData()
         view.addSubview(enterInfoTextLabel) //add to view first
         enterInfoTextLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         enterInfoTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -212,10 +231,12 @@ class InfoSheetViewController: UIViewController {
         doneButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        view.addSubview(goToUnitSelectionButton)
-        goToUnitSelectionButton.translatesAutoresizingMaskIntoConstraints = false
-        goToUnitSelectionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        goToUnitSelectionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        if !seguedFromSettings {
+            view.addSubview(goToUnitSelectionButton)
+            goToUnitSelectionButton.translatesAutoresizingMaskIntoConstraints = false
+            goToUnitSelectionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+            goToUnitSelectionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        } //Currently, this can only be changed once!
     }
     
     func getCalorieGoal () -> Int {

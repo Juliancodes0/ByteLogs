@@ -15,6 +15,7 @@ struct CustomDatePicker: View {
     var completionLeftToggle: ( () -> ())?
     var completionRightToggle: ( () -> ())?
     @State var convertToDateToggleView: Bool = false
+    var reloadDelegate: DataReloadDelegate?
     var body: some View {
         if !convertToDateToggleView {
             mainToggle
@@ -32,6 +33,7 @@ struct CustomDatePicker: View {
                     withAnimation {
                         self.convertToDateToggleView = false
                         self.opacityIsMuted = false
+                        self.reloadDelegate?.reloadData()
                     }
                 }
                 .onChange(of: date) { oldValue, newValue in

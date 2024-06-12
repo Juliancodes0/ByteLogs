@@ -22,6 +22,7 @@ enum EnergyUnitOfMeasurement: Codable {
 }
 
 class User {
+        
     var userLoadedApp: Bool = false
     var calorieGoal: Int = 0
     var unitPreference: WeightUnitOfMeasurement = .lbs
@@ -78,7 +79,7 @@ class User {
     }
     
     func getUserEnergyPreference () -> EnergyUnitOfMeasurement {
-        if let data = UserDefaults.standard.data(forKey: "unitPreference") {
+        if let data = UserDefaults.standard.data(forKey: "energyPreference") {
             guard let decoded = try? JSONDecoder().decode(EnergyUnitOfMeasurement.self, from: data) else {
                 return .cal
             }

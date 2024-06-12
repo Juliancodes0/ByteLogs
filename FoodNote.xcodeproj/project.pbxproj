@@ -45,6 +45,7 @@
 		05D14C382C0A9EA3005D1047 /* DataReloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C372C0A9EA3005D1047 /* DataReloadDelegate.swift */; };
 		05D14C3C2C0A9ED0005D1047 /* MealBoxComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */; };
 		05D14C3E2C0A9EE9005D1047 /* MealBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3D2C0A9EE9005D1047 /* MealBox.swift */; };
+		05EE70152C1A0B7E00FCA48D /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE70142C1A0B7E00FCA48D /* StringConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		05D14C372C0A9EA3005D1047 /* DataReloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReloadDelegate.swift; sourceTree = "<group>"; };
 		05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBoxComponent2.swift; sourceTree = "<group>"; };
 		05D14C3D2C0A9EE9005D1047 /* MealBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBox.swift; sourceTree = "<group>"; };
+		05EE70142C1A0B7E00FCA48D /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				05D14C0A2C0A9AE9005D1047 /* FoodDataModel.xcdatamodeld */,
 				05D14C0D2C0A9C5D005D1047 /* CoreDataManager.swift */,
 				0542642D2C0CAF3A00DCE34A /* HapticManager.swift */,
+				05EE70142C1A0B7E00FCA48D /* StringConstants.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				05D14C2E2C0A9E33005D1047 /* User.swift in Sources */,
 				05D14C322C0A9E5F005D1047 /* MealModel.swift in Sources */,
 				052263012C0CE6AA002095CA /* DeletionProtocol.swift in Sources */,
+				05EE70152C1A0B7E00FCA48D /* StringConstants.swift in Sources */,
 				05D14C142C0A9CF4005D1047 /* CalorieViewController.swift in Sources */,
 				05D14BFA2C0A99DE005D1047 /* Color+Extensions.swift in Sources */,
 				05D14C182C0A9D19005D1047 /* WeightLogView.swift in Sources */,

@@ -15,6 +15,7 @@ struct TopRowView : View {
     @Binding var opacityIsMuted: Bool
     var completionLeftToggle: ( () -> ())?
     var completionRightToggle: ( () -> ())?
+    var reloadDelegate: DataReloadDelegate?
     var body: some View {
         VStack {
             VStack {
@@ -39,7 +40,7 @@ struct TopRowView : View {
                 .foregroundStyle(Color.gray)
             Divider()
         }.opacity(self.opacityIsMuted ? 0 : 1)
-            CustomDatePicker(date: $date, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: completionLeftToggle, completionRightToggle: completionRightToggle)
+            CustomDatePicker(date: $date, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: completionLeftToggle, completionRightToggle: completionRightToggle, reloadDelegate: reloadDelegate)
                 .padding(.top, 1)
         }.preferredColorScheme(.light)
     }

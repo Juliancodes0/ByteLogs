@@ -14,6 +14,5 @@ protocol FoodItemProtocol {
     var category: Int16 {get}
     var title: String {get}
     var date: Date? {get}
-    
     var isMeal: Bool {get}
 }

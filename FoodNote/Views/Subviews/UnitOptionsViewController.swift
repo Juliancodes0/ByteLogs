@@ -22,6 +22,7 @@ enum SelectedEnergyUnit {
 class UnitOptionsViewController: UIViewController {
     
     var user: User
+    weak var delegate: ReloadStringDataDelegate?
     var selectedOption: SelectedWeightOption = .lbs
     var selectedEnergyUnit: SelectedEnergyUnit = .cal
     
@@ -147,6 +148,7 @@ class UnitOptionsViewController: UIViewController {
         case .stone:
             user.saveUserUnitPreference(preference: .stone)
         }
+        
         switch self.selectedEnergyUnit {
         case .cal:
             user.saveUserEnergyPreference(preference: .cal)
@@ -154,7 +156,7 @@ class UnitOptionsViewController: UIViewController {
             user.saveUserEnergyPreference(preference: .kcal)
         }
         self.dismiss(animated: true, completion: {
-            //some completion here
+            self.delegate?.reloadStringData()
         })
     }
     
@@ -172,20 +174,37 @@ class UnitOptionsViewController: UIViewController {
         view.backgroundColor = .white
         view.overrideUserInterfaceStyle = .light
         arrange()
-        self.selectedOption = switch user.getUnitPreference() {
+        
+        switch user.getUnitPreference() {
         case .lbs:
-                .lbs
+            self.selectedOption = .lbs
+            self.lbsButton.backgroundColor = .systemBlue
+            self.kgButton.backgroundColor = .lightGray
+            self.stoneButton.backgroundColor = .lightGray
         case .kg:
-                .kg
+            self.selectedOption = .kg
+            self.lbsButton.backgroundColor = .lightGray
+            self.kgButton.backgroundColor = .systemBlue
+            self.stoneButton.backgroundColor = .lightGray
         case .stone:
-                .stone
+            self.selectedOption = .stone
+            self.lbsButton.backgroundColor = .lightGray
+            self.kgButton.backgroundColor = .lightGray
+            self.stoneButton.backgroundColor = .systemBlue
         }
-        self.selectedEnergyUnit = switch user.getUserEnergyPreference() {
+        
+        switch user.getUserEnergyPreference() {
+           
         case .cal:
-                .cal
+            self.selectedEnergyUnit = .cal
+            self.calButton.backgroundColor = .systemBlue
+            self.kcalButton.backgroundColor = .lightGray
         case .kcal:
-                .kcal
+            self.selectedEnergyUnit = .kcal
+            self.calButton.backgroundColor = .lightGray
+            self.kcalButton.backgroundColor = .systemBlue
         }
+        
     }
     
     func arrange () {
@@ -201,9 +220,9 @@ class UnitOptionsViewController: UIViewController {
             stoneButton
         ])
         
-        self.lbsButton.backgroundColor = selectedOption == .lbs ? .systemBlue : .clear
-        self.kgButton.backgroundColor = selectedOption == .kg ? .systemBlue : .lightGray
-        self.stoneButton.backgroundColor = selectedOption == .stone ? .systemBlue : .lightGray
+//        self.lbsButton.backgroundColor = selectedOption == .lbs ? .systemBlue : .clear
+//        self.kgButton.backgroundColor = selectedOption == .kg ? .systemBlue : .lightGray
+//        self.stoneButton.backgroundColor = selectedOption == .stone ? .systemBlue : .lightGray
 
         weightButtonStack.translatesAutoresizingMaskIntoConstraints = false
         weightButtonStack.axis = .vertical
@@ -220,9 +239,6 @@ class UnitOptionsViewController: UIViewController {
         calButton,
         kcalButton
         ])
-        
-        self.calButton.backgroundColor = selectedEnergyUnit == .cal ? .systemBlue : .clear
-        self.kcalButton.backgroundColor = selectedEnergyUnit == .kcal ? .systemBlue : .lightGray
         
         energyUnitStack.translatesAutoresizingMaskIntoConstraints = false
         energyUnitStack.axis = .vertical

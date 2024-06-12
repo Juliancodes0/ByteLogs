@@ -65,7 +65,7 @@ struct HomePgeView: View , DataReloadDelegate {
             Color.white.ignoresSafeArea()
             VStack {
                 Spacer()
-                TopRowView(user: user, date: $date, calories: $caloriesForDay, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: self.animateBackward, completionRightToggle: self.animateForward)
+                TopRowView(user: user, date: $date, calories: $caloriesForDay, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: self.animateBackward, completionRightToggle: self.animateForward, reloadDelegate: self)
                     .padding((.bottom))
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
