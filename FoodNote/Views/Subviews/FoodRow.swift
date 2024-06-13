@@ -20,8 +20,8 @@ struct FoodRow: View {
         switch UnitManager.shared.getUserEnergyPreference() {
         case .cal:
             return food.calories == 1 ? " calorie" : "calories"
-        case .kcal:
-            return food.calories == 1 ? " Kcal" : "Kcals"
+        case .kilojoules:
+            return " kJ"
         }
     }
     
@@ -29,8 +29,8 @@ struct FoodRow: View {
         switch UnitManager.shared.getUserEnergyPreference() {
         case .cal:
             return "calories"
-        case .kcal:
-           return "Kcals"
+        case .kilojoules:
+           return "kJ"
         }
     }
     

@@ -28,6 +28,16 @@ struct FoodAddBox: View {
     @Environment(\.dismiss) var dismiss
     @Binding var categoryString: String
     var callbackMethod: () -> ()
+    
+    private var energyUnitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return foodItem.calories == 1 ? "calorie" : "calories"
+        case .kilojoules:
+            return "kJ"
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -35,7 +45,7 @@ struct FoodAddBox: View {
                     Text(foodItem.title)
                         .font(.headline)
                         .foregroundColor(.primary)
-                    Text("\(foodItem.calories) \(foodItem.calories == 1 ? "calorie" : "calories")")
+                    Text("\(foodItem.calories) \(energyUnitString)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -134,6 +144,16 @@ struct AddFoodSheet: View {
     let foodEditing: FoodModel?
     @State var showErrorLabel: Bool = false
     @State var aMealWasAdded: Bool = false
+    
+    private var energyUnitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return "Calories"
+        case .kilojoules:
+            return "kJ"
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
@@ -196,7 +216,7 @@ struct AddFoodSheet: View {
 
                 
                 if showErrorLabel {
-                    Text("Add a title and calories")
+                    Text("Add a Title and \(self.energyUnitString)")
                         .bold()
                         .foregroundStyle(Color.red)
                 }
@@ -205,7 +225,7 @@ struct AddFoodSheet: View {
                     TextField("Title", text: $title)
                         .textFieldStyle(.roundedBorder)
                         .frame(width: 140)
-                    TextField("Calories", text: $calories)
+                    TextField("\(self.energyUnitString)", text: $calories)
                         .textFieldStyle(.roundedBorder)
                         .frame(width: 140)
                         .keyboardType(.numberPad)

@@ -81,7 +81,19 @@ struct WeightLogView: View {
     @StateObject var viewModel: WeightLogViewModel = WeightLogViewModel()
     @State var goToLogWeightView: Bool = false
     @State var updateCaloricGoal: Bool = false
-    var goalWeight: String {
+    
+    private var weightString: String {
+        switch UnitManager.shared.getUnitPreference() {
+        case .lbs:
+            return "\(goalWeight) \("lbs")"
+        case .kg:
+            return "\(goalWeight) \("KGs")"
+        case .stone:
+            return "\(goalWeight) \("stone")"
+        }
+    }
+    
+    private var goalWeight: String {
         return String(user.getUserGoalWeight().with1Decimal())
     }
     var body: some View {
@@ -95,7 +107,7 @@ struct WeightLogView: View {
                     .font(.largeTitle)
                     .bold()
                 Divider()
-                Text("My goal: \(goalWeight) lbs")
+                Text("My goal: \(weightString)")
                     .fontWeight(.semibold)
                     .font(.footnote)
                     .foregroundStyle(Color.indigo)

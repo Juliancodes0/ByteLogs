@@ -16,7 +16,7 @@ enum SelectedWeightOption {
 
 enum SelectedEnergyUnit {
     case cal
-    case kcal
+    case kJ
 }
 
 class UnitOptionsViewController: UIViewController {
@@ -83,13 +83,13 @@ class UnitOptionsViewController: UIViewController {
         return button
     }()
     
-    private var kcalButton: UIButton = {
+    private var kJButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("KCal", for: .normal)
+        button.setTitle("Kilojoules", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 15
         button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        button.addTarget(self, action: #selector(selectKCal), for: .touchUpInside)
+        button.addTarget(self, action: #selector(selectkJ), for: .touchUpInside)
         return button
     }()
     
@@ -130,12 +130,12 @@ class UnitOptionsViewController: UIViewController {
     @objc func selectCal () {
         self.selectedEnergyUnit = .cal
         self.calButton.backgroundColor = .systemBlue
-        self.kcalButton.backgroundColor = .lightGray
+        self.kJButton.backgroundColor = .lightGray
     }
     
-    @objc func selectKCal () {
-        self.selectedEnergyUnit = .kcal
-        self.kcalButton.backgroundColor = .systemBlue
+    @objc func selectkJ () {
+        self.selectedEnergyUnit = .kJ
+        self.kJButton.backgroundColor = .systemBlue
         self.calButton.backgroundColor = .lightGray
     }
     
@@ -152,8 +152,8 @@ class UnitOptionsViewController: UIViewController {
         switch self.selectedEnergyUnit {
         case .cal:
             UnitManager.shared.saveUserEnergyPreference(preference: .cal)
-        case .kcal:
-            UnitManager.shared.saveUserEnergyPreference(preference: .kcal)
+        case .kJ:
+            UnitManager.shared.saveUserEnergyPreference(preference: .kilojoules)
         }
         self.dismiss(animated: true, completion: {
             self.delegate?.reloadStringData()
@@ -198,11 +198,11 @@ class UnitOptionsViewController: UIViewController {
         case .cal:
             self.selectedEnergyUnit = .cal
             self.calButton.backgroundColor = .systemBlue
-            self.kcalButton.backgroundColor = .lightGray
-        case .kcal:
-            self.selectedEnergyUnit = .kcal
+            self.kJButton.backgroundColor = .lightGray
+        case .kilojoules:
+            self.selectedEnergyUnit = .kJ
             self.calButton.backgroundColor = .lightGray
-            self.kcalButton.backgroundColor = .systemBlue
+            self.kJButton.backgroundColor = .systemBlue
         }
         
     }
@@ -237,7 +237,7 @@ class UnitOptionsViewController: UIViewController {
         
         let energyUnitStack: UIStackView = UIStackView(arrangedSubviews: [
         calButton,
-        kcalButton
+        kJButton
         ])
         
         energyUnitStack.translatesAutoresizingMaskIntoConstraints = false

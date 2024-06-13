@@ -67,6 +67,15 @@ struct MealRowItem: View {
         }
     }
     
+    private var energyUnitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return meal.calories == 1 ? "calorie" : "calories"
+        case .kilojoules:
+            return "kJ"
+        }
+    }
+    
     var body: some View {
             HStack {
                 Text(meal.title)
@@ -74,7 +83,7 @@ struct MealRowItem: View {
                     .fontWeight(.semibold)
                 Spacer()
                 
-                Text("\(meal.calories) calories")
+                Text("\(meal.calories) \(energyUnitString)")
                     .foregroundStyle(Color.blue)
                     .bold()
                     .onTapGesture {

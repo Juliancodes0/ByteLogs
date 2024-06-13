@@ -43,8 +43,8 @@ struct MealDetails: View {
         switch UnitManager.shared.getUserEnergyPreference() {
         case .cal:
             return "calories"
-        case .kcal:
-            return "KCals"
+        case .kilojoules:
+            return "kJ"
         }
     }
     

@@ -15,6 +15,15 @@ struct FoodItemCell: View {
     @Binding var isInFoodRemoveMode: Bool
     @Binding var addedToArray: [FoodModel]
     
+    private var energyUnitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return food.calories == 1 ? "calorie" : "calories"
+        case .kilojoules:
+            return "kJ"
+        }
+    }
+    
     var body: some View {
         HStack {
             if isInFoodRemoveMode {
@@ -35,7 +44,7 @@ struct FoodItemCell: View {
             callback?()
         }) {
             HStack {
-                Text("\(food.title) : \(food.calories) calories")
+                Text("\(food.title) : \(food.calories) \(energyUnitString)")
                     .bold()
                     .foregroundColor(.black)
                 
@@ -68,7 +77,7 @@ struct FoodItemCell: View {
             callback?()
         }) {
             HStack {
-                Text("\(food.title) : \(food.calories) calories")
+                Text("\(food.title) : \(food.calories) \(energyUnitString)")
                     .bold()
                     .foregroundColor(.black)
                 
@@ -114,6 +123,15 @@ struct CreateMealView: View {
     let mealEditing: MealModel?
     var dismissOpacity: Double = 1
     
+    private var energyUnitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return "Calories"
+        case .kilojoules:
+            return "kJ"
+        }
+    }
+    
     var filteredFoodsResults: [FoodModel] {
         guard !searchBarText.isEmpty else {
             return viewModel.foods
@@ -150,7 +168,7 @@ struct CreateMealView: View {
                                 .foregroundStyle(Color.white)
                                 .shadow(radius: 3)
                         }.padding()
-                    TextField("Calories", text: $calories)
+                    TextField("\(energyUnitString)", text: $calories)
                         .padding()
                         .focused($isFocused, equals: .calories)
                         .keyboardType(.numberPad)

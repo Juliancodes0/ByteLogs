@@ -18,7 +18,7 @@ enum WeightUnitOfMeasurement : Codable {
 //Not yet used
 enum EnergyUnitOfMeasurement: Codable {
     case cal
-    case kcal
+    case kilojoules
 }
 
 class UserBasicsManager {

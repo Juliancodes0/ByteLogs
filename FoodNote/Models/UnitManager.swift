@@ -13,6 +13,7 @@ class UnitManager {
     
     static let shared = UnitManager()
     
+    
     func saveUserUnitPreference (preference: WeightUnitOfMeasurement) {
         guard let encoded = try? JSONEncoder().encode(preference) else {
             return

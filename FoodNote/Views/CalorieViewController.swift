@@ -10,9 +10,18 @@ import SwiftUI
 
 class CalorieViewController: UIViewController {
     
+    private var unitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return "calories"
+        case .kilojoules:
+            return "kJ"
+        }
+    }
+        
     var calorieAmount: Int = 1000 {
         didSet {
-            caloriesTextLabel.text = String(calorieAmount) + " calories"
+            caloriesTextLabel.text = String(calorieAmount) + " \(unitString)"
         }
     }
     
@@ -32,7 +41,7 @@ class CalorieViewController: UIViewController {
     
     lazy var caloriesTextLabel: UILabel = {
         let label = UILabel()
-        label.text = String(self.calorieAmount) + " calories"
+        label.text = String(self.calorieAmount) + " \(unitString)"
         label.font = UIFont.systemFont(ofSize: 26, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +50,7 @@ class CalorieViewController: UIViewController {
     
     lazy var disclaimerLabel: UILabel = {
        let label = UILabel()
-        label.text = "Note: The ByteLogs App does not recommend a specific calorie intake. Please consult a nutritionist for personalized advice."
+        label.text = "Note: The ByteLogs App does not recommend a specific caloric intake. Please consult a nutritionist for personalized advice."
         label.numberOfLines = .max
         label.textAlignment = .center
         label.widthAnchor.constraint(equalToConstant: 250).isActive = true
