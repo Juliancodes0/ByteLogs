@@ -217,6 +217,9 @@ struct AllMealsView: View, MealReloaderDelegate {
     }
 }
 
+
+
 #Preview {
+
     AllMealsView(date: Date(), categoryOption: nil, aMealWasAdded: .constant(false))
 }

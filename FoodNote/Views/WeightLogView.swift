@@ -15,8 +15,8 @@ class WeightLogViewModel : ObservableObject, DeletetionProtocol {
         self.getAllLogs()
     }
     
-    func measurementString (user: User) -> String {
-        switch user.getUnitPreference() {
+    func measurementString (user: UserBasicsManager) -> String {
+        switch UnitManager.shared.getUnitPreference() {
         case .lbs:
             return "lbs"
         case .kg:
@@ -43,10 +43,23 @@ class WeightLogViewModel : ObservableObject, DeletetionProtocol {
 struct WeightCell: View {
     let weightModel: LoggedWeightModel
     var delegate: DeletetionProtocol?
+    var user: UserBasicsManager
+    
+     var measurementString: String {
+        switch UnitManager.shared.getUnitPreference() {
+        case .lbs:
+            return "LBS"
+        case .kg:
+            return "KGs"
+        case .stone:
+            return "Stone"
+        }
+    }
+    
     var body: some View {
         ZStack {
             HStack {
-                Text("\(weightModel.weight.with1Decimal()) lbs")
+                Text("\(weightModel.weight.with1Decimal()) \(self.measurementString)")
                 Spacer()
                 Text("\(weightModel.dateLogged.formatted(date: .abbreviated, time: .omitted))")
                     .foregroundStyle(Color.black)
@@ -64,7 +77,7 @@ struct WeightCell: View {
 
 struct WeightLogView: View {
     @Environment(\.dismiss) var dismiss
-    let user: User
+    let user: UserBasicsManager
     @StateObject var viewModel: WeightLogViewModel = WeightLogViewModel()
     @State var goToLogWeightView: Bool = false
     @State var updateCaloricGoal: Bool = false
@@ -90,7 +103,7 @@ struct WeightLogView: View {
                 VStack() {
                     if viewModel.loggedWeights.count > 0 {
                         List(viewModel.loggedWeights.sorted(by: {$0.dateLogged > $1.dateLogged})) { weightData in
-                            WeightCell(weightModel: weightData, delegate: viewModel.self)
+                            WeightCell(weightModel: weightData, delegate: viewModel.self, user: user)
                                 .background() {
                                     RoundedRectangle(cornerRadius: 5)
                                         .foregroundStyle(Color.white)
@@ -164,5 +177,5 @@ struct WeightLogView: View {
 
 
 #Preview {
-    WeightLogView(user: User())
+    WeightLogView(user: UserBasicsManager())
 }

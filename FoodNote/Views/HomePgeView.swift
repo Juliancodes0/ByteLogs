@@ -46,7 +46,7 @@ struct HomePgeView: View , DataReloadDelegate {
     @State var date: Date = Date()
     @State var caloriesForDay: Int16 = 0
     @StateObject var viewModel: HomePgeViewModel = HomePgeViewModel()
-    let user: User
+    let user: UserBasicsManager
     @State private var showPlusMenu: Bool = false
     @State private var showAddFoodSheetBreakfastDefault: Bool = false
     @State private var showAddFoodLunch: Bool = false
@@ -428,7 +428,7 @@ extension HomePgeView {
 }
 
 #Preview {
-    HomePgeView(user: User())
+    HomePgeView(user: UserBasicsManager())
 }
 
 extension HomePgeView {

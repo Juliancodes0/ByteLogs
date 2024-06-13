@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TopRowView : View {
-    let user: User
+    let user: UserBasicsManager
     @Binding var date: Date
     @Binding var calories: Int16
     @Binding var buttonShouldBeActive: Bool

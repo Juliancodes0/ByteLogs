@@ -37,7 +37,7 @@
 		05D14C282C0A9DDC005D1047 /* FoodDetailedRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C272C0A9DDC005D1047 /* FoodDetailedRowView.swift */; };
 		05D14C2A2C0A9DFC005D1047 /* CategoryOptionsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C292C0A9DFC005D1047 /* CategoryOptionsSubview.swift */; };
 		05D14C2C2C0A9E09005D1047 /* HideListIndicatorsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C2B2C0A9E09005D1047 /* HideListIndicatorsViewModifier.swift */; };
-		05D14C2E2C0A9E33005D1047 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C2D2C0A9E33005D1047 /* User.swift */; };
+		05D14C2E2C0A9E33005D1047 /* UserBasicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C2D2C0A9E33005D1047 /* UserBasicsManager.swift */; };
 		05D14C302C0A9E4D005D1047 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C2F2C0A9E4D005D1047 /* FoodModel.swift */; };
 		05D14C322C0A9E5F005D1047 /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C312C0A9E5F005D1047 /* MealModel.swift */; };
 		05D14C342C0A9E76005D1047 /* LoggedWeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C332C0A9E76005D1047 /* LoggedWeightModel.swift */; };
@@ -45,7 +45,7 @@
 		05D14C382C0A9EA3005D1047 /* DataReloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C372C0A9EA3005D1047 /* DataReloadDelegate.swift */; };
 		05D14C3C2C0A9ED0005D1047 /* MealBoxComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */; };
 		05D14C3E2C0A9EE9005D1047 /* MealBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3D2C0A9EE9005D1047 /* MealBox.swift */; };
-		05EE70152C1A0B7E00FCA48D /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE70142C1A0B7E00FCA48D /* StringConstants.swift */; };
+		05EE701B2C1A9A9400FCA48D /* UnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE701A2C1A9A9400FCA48D /* UnitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +80,7 @@
 		05D14C272C0A9DDC005D1047 /* FoodDetailedRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailedRowView.swift; sourceTree = "<group>"; };
 		05D14C292C0A9DFC005D1047 /* CategoryOptionsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOptionsSubview.swift; sourceTree = "<group>"; };
 		05D14C2B2C0A9E09005D1047 /* HideListIndicatorsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideListIndicatorsViewModifier.swift; sourceTree = "<group>"; };
-		05D14C2D2C0A9E33005D1047 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		05D14C2D2C0A9E33005D1047 /* UserBasicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBasicsManager.swift; sourceTree = "<group>"; };
 		05D14C2F2C0A9E4D005D1047 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		05D14C312C0A9E5F005D1047 /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		05D14C332C0A9E76005D1047 /* LoggedWeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedWeightModel.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		05D14C372C0A9EA3005D1047 /* DataReloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReloadDelegate.swift; sourceTree = "<group>"; };
 		05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBoxComponent2.swift; sourceTree = "<group>"; };
 		05D14C3D2C0A9EE9005D1047 /* MealBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBox.swift; sourceTree = "<group>"; };
-		05EE70142C1A0B7E00FCA48D /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		05EE701A2C1A9A9400FCA48D /* UnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,7 +227,6 @@
 				05D14C0A2C0A9AE9005D1047 /* FoodDataModel.xcdatamodeld */,
 				05D14C0D2C0A9C5D005D1047 /* CoreDataManager.swift */,
 				0542642D2C0CAF3A00DCE34A /* HapticManager.swift */,
-				05EE70142C1A0B7E00FCA48D /* StringConstants.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -235,8 +234,9 @@
 		05D14C082C0A9AA1005D1047 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				05D14C2D2C0A9E33005D1047 /* User.swift */,
+				05D14C2D2C0A9E33005D1047 /* UserBasicsManager.swift */,
 				05D14C2F2C0A9E4D005D1047 /* FoodModel.swift */,
+				05EE701A2C1A9A9400FCA48D /* UnitManager.swift */,
 				05D14C312C0A9E5F005D1047 /* MealModel.swift */,
 				05D14C332C0A9E76005D1047 /* LoggedWeightModel.swift */,
 			);
@@ -347,15 +347,15 @@
 				05D14C1C2C0A9D51005D1047 /* CreateMealView.swift in Sources */,
 				05D14C0C2C0A9AE9005D1047 /* FoodDataModel.xcdatamodeld in Sources */,
 				05D14C282C0A9DDC005D1047 /* FoodDetailedRowView.swift in Sources */,
+				05EE701B2C1A9A9400FCA48D /* UnitManager.swift in Sources */,
 				05D14C3C2C0A9ED0005D1047 /* MealBoxComponent2.swift in Sources */,
 				05D14C342C0A9E76005D1047 /* LoggedWeightModel.swift in Sources */,
 				05D14C1A2C0A9D3D005D1047 /* AddFoodSheet.swift in Sources */,
 				05D14C0E2C0A9C5D005D1047 /* CoreDataManager.swift in Sources */,
 				059B6BE82C164D1000AD5257 /* UnitOptionsViewController.swift in Sources */,
-				05D14C2E2C0A9E33005D1047 /* User.swift in Sources */,
+				05D14C2E2C0A9E33005D1047 /* UserBasicsManager.swift in Sources */,
 				05D14C322C0A9E5F005D1047 /* MealModel.swift in Sources */,
 				052263012C0CE6AA002095CA /* DeletionProtocol.swift in Sources */,
-				05EE70152C1A0B7E00FCA48D /* StringConstants.swift in Sources */,
 				05D14C142C0A9CF4005D1047 /* CalorieViewController.swift in Sources */,
 				05D14BFA2C0A99DE005D1047 /* Color+Extensions.swift in Sources */,
 				05D14C182C0A9D19005D1047 /* WeightLogView.swift in Sources */,

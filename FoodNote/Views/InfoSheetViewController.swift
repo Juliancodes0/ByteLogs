@@ -14,7 +14,7 @@ protocol ReloadStringDataDelegate: AnyObject {
 
 class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
     
-    let user = User()
+    let user = UserBasicsManager()
     var seguedFromSettings: Bool = false
     
     init(seguedFromSettings: Bool) {
@@ -101,7 +101,7 @@ class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
     }()
     
     func reloadStringData() {
-        self.weightTextField.placeholder = switch user.getUnitPreference() {
+        self.weightTextField.placeholder = switch  UnitManager.shared.getUnitPreference() {
         case .lbs:
             "LBS"
         case .kg:

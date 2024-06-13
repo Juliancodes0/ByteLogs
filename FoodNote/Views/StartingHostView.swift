@@ -11,7 +11,7 @@ struct StartingHostView: View {
     @State var showStartSheet: Bool = true
     @State var showInfoSheet: Bool = false
     @State var goToHomePge: Bool = false
-    let user = User()
+    let user = UserBasicsManager()
     var body: some View {
         ZStack {
             VStack {

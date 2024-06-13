@@ -16,10 +16,10 @@ class CalorieViewController: UIViewController {
         }
     }
     
-    var user: User
+    var user: UserBasicsManager
     var seguedFromProgressView: Bool = false
     
-    init(calorieAmount: Int, user: User, seguedFromProgressView: Bool = false) {
+    init(calorieAmount: Int, user: UserBasicsManager, seguedFromProgressView: Bool = false) {
         self.calorieAmount = calorieAmount
         self.user = user
         self.seguedFromProgressView = seguedFromProgressView
@@ -169,7 +169,7 @@ class CalorieViewController: UIViewController {
 
 
 struct CaloriesView: UIViewControllerRepresentable {
-    let user: User
+    let user: UserBasicsManager
     var seguedFromProgressView: Bool = false
     
     let calorieRecommendationAmount: Int
@@ -183,6 +183,6 @@ struct CaloriesView: UIViewControllerRepresentable {
 
 struct CaloriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CaloriesView(user: User(), calorieRecommendationAmount: 1300)
+        CaloriesView(user: UserBasicsManager(), calorieRecommendationAmount: 1300)
     }
 }

@@ -39,6 +39,15 @@ struct MealDetails: View {
     @StateObject var viewModel: MealDetailsViewModel = MealDetailsViewModel()
     let meal: MealModel
     
+    var unitString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return "calories"
+        case .kcal:
+            return "KCals"
+        }
+    }
+    
     var body: some View {
         ZStack {
             LinearGradient(
@@ -57,7 +66,7 @@ struct MealDetails: View {
                     .padding(.top, 20)
                     .foregroundColor(.white)
                 
-                Text("Total calories: \(meal.calories)")
+                Text("Total \(unitString): \(meal.calories)")
                     .font(.title2)
                     .foregroundColor(.white)
                     .padding(.top, 10)

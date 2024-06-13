@@ -15,11 +15,30 @@ struct FoodRow: View {
     @State var editFood: Bool = false
     @State var editMeal: Bool = false
     @Environment(\.dismiss) var dismiss
+    
+    func stringForCalories() -> String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return food.calories == 1 ? " calorie" : "calories"
+        case .kcal:
+            return food.calories == 1 ? " Kcal" : "Kcals"
+        }
+    }
+    
+    var energyUnitPreferenceString: String {
+        switch UnitManager.shared.getUserEnergyPreference() {
+        case .cal:
+            return "calories"
+        case .kcal:
+           return "Kcals"
+        }
+    }
+    
     var body: some View {
         HStack {
             Text(food.title)
             Spacer()
-            Text("\(food.calories) \(food.calories == 1 ? "calorie" : "calories")")
+            Text("\(food.calories) \(stringForCalories())")
             if food.isMeal {
                 Button(action: {
                     self.openMealDetails = true

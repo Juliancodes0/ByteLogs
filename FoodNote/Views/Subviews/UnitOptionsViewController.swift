@@ -21,7 +21,7 @@ enum SelectedEnergyUnit {
 
 class UnitOptionsViewController: UIViewController {
     
-    var user: User
+    var user: UserBasicsManager
     weak var delegate: ReloadStringDataDelegate?
     var selectedOption: SelectedWeightOption = .lbs
     var selectedEnergyUnit: SelectedEnergyUnit = .cal
@@ -142,25 +142,25 @@ class UnitOptionsViewController: UIViewController {
     @objc func saveButtonPressed () {
         switch self.selectedOption {
         case .lbs:
-            user.saveUserUnitPreference(preference: .lbs)
+            UnitManager.shared.saveUserUnitPreference(preference: .lbs)
         case .kg:
-            user.saveUserUnitPreference(preference: .kg)
+            UnitManager.shared.saveUserUnitPreference(preference: .kg)
         case .stone:
-            user.saveUserUnitPreference(preference: .stone)
+            UnitManager.shared.saveUserUnitPreference(preference: .stone)
         }
         
         switch self.selectedEnergyUnit {
         case .cal:
-            user.saveUserEnergyPreference(preference: .cal)
+            UnitManager.shared.saveUserEnergyPreference(preference: .cal)
         case .kcal:
-            user.saveUserEnergyPreference(preference: .kcal)
+            UnitManager.shared.saveUserEnergyPreference(preference: .kcal)
         }
         self.dismiss(animated: true, completion: {
             self.delegate?.reloadStringData()
         })
     }
     
-    init(user: User) {
+    init(user: UserBasicsManager) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
@@ -175,7 +175,7 @@ class UnitOptionsViewController: UIViewController {
         view.overrideUserInterfaceStyle = .light
         arrange()
         
-        switch user.getUnitPreference() {
+        switch UnitManager.shared.getUnitPreference() {
         case .lbs:
             self.selectedOption = .lbs
             self.lbsButton.backgroundColor = .systemBlue
@@ -193,7 +193,7 @@ class UnitOptionsViewController: UIViewController {
             self.stoneButton.backgroundColor = .systemBlue
         }
         
-        switch user.getUserEnergyPreference() {
+        switch UnitManager.shared.getUserEnergyPreference() {
            
         case .cal:
             self.selectedEnergyUnit = .cal
@@ -257,7 +257,7 @@ class UnitOptionsViewController: UIViewController {
 struct UnitViewControllerRepresentative: UIViewControllerRepresentable {
     var seguedFromSettings: Bool = false
     func makeUIViewController(context: Context) -> some UIViewController {
-        return UnitOptionsViewController(user: User())
+        return UnitOptionsViewController(user: UserBasicsManager())
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
