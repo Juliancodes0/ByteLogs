@@ -40,6 +40,7 @@ struct CustomDatePicker: View {
                     withAnimation {
                         self.convertToDateToggleView = false
                         self.opacityIsMuted = false
+                        self.reloadDelegate?.reloadData()
                     }
                 }
             }

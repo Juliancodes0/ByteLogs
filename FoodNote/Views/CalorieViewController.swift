@@ -71,8 +71,19 @@ class CalorieViewController: UIViewController {
     
      var adjustmentSlider: UISlider = {
        let slider = UISlider()
-        slider.minimumValue = 500
-        slider.maximumValue = 4000
+         slider.minimumValue = switch UnitManager.shared.getUserEnergyPreference() {
+         case .cal:
+             500
+         case .kilojoules:
+             2000
+         }
+         slider.maximumValue = switch UnitManager.shared.getUserEnergyPreference() {
+         case .cal:
+             4000
+         case .kilojoules:
+             16000
+         }
+         
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.tintColor = .gray
         slider.widthAnchor.constraint(equalToConstant: 200).isActive = true
