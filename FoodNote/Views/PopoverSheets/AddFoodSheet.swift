@@ -174,7 +174,7 @@ struct AddFoodSheet: View {
                                 .values
                                 .sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
                                 .prefix(30)
-                                .filter({$0.category != 5})
+//                                .filter({$0.category != 5})
                             
                             
                             ForEach(mostRecentFoodItems, id: \.id) { foodItem in
