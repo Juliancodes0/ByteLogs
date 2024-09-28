@@ -11,6 +11,8 @@
 		052263032C0CE968002095CA /* FoodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052263022C0CE968002095CA /* FoodRow.swift */; };
 		0542642E2C0CAF3A00DCE34A /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542642D2C0CAF3A00DCE34A /* HapticManager.swift */; };
 		054C88762C1020CA00C9FF87 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88752C1020CA00C9FF87 /* Sequence+Extensions.swift */; };
+		0567A9F92CA7B71C001E7EDC /* GlassViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567A9F82CA7B70E001E7EDC /* GlassViewModifier.swift */; };
+		0567AA032CA7D1B0001E7EDC /* Action_Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0567AA022CA7D1B0001E7EDC /* Action_Man.ttf */; };
 		056DC6BE2C116DF6008A200E /* MealReloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056DC6BD2C116DF6008A200E /* MealReloaderDelegate.swift */; };
 		059B6BE82C164D1000AD5257 /* UnitOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059B6BE72C164D1000AD5257 /* UnitOptionsViewController.swift */; };
 		05D14BEB2C0A99A6005D1047 /* FoodNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14BEA2C0A99A6005D1047 /* FoodNoteApp.swift */; };
@@ -53,6 +55,9 @@
 		052263022C0CE968002095CA /* FoodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRow.swift; sourceTree = "<group>"; };
 		0542642D2C0CAF3A00DCE34A /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		054C88752C1020CA00C9FF87 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		0567A9F82CA7B70E001E7EDC /* GlassViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassViewModifier.swift; sourceTree = "<group>"; };
+		0567A9FF2CA7CD6E001E7EDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0567AA022CA7D1B0001E7EDC /* Action_Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man.ttf; sourceTree = "<group>"; };
 		056DC6BD2C116DF6008A200E /* MealReloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReloaderDelegate.swift; sourceTree = "<group>"; };
 		059B6BE72C164D1000AD5257 /* UnitOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOptionsViewController.swift; sourceTree = "<group>"; };
 		05D14BE72C0A99A6005D1047 /* FoodNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +137,7 @@
 		05D14BE92C0A99A6005D1047 /* FoodNote */ = {
 			isa = PBXGroup;
 			children = (
+				0567A9FF2CA7CD6E001E7EDC /* Info.plist */,
 				05D14BEA2C0A99A6005D1047 /* FoodNoteApp.swift */,
 				05D14BF82C0A99CC005D1047 /* Extensions */,
 				05D14C022C0A9A18005D1047 /* Views */,
@@ -217,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				05D14C2B2C0A9E09005D1047 /* HideListIndicatorsViewModifier.swift */,
+				0567A9F82CA7B70E001E7EDC /* GlassViewModifier.swift */,
+				0567AA022CA7D1B0001E7EDC /* Action_Man.ttf */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -312,6 +320,7 @@
 			files = (
 				05D14BF22C0A99A7005D1047 /* Preview Assets.xcassets in Resources */,
 				05D14BEF2C0A99A7005D1047 /* Assets.xcassets in Resources */,
+				0567AA032CA7D1B0001E7EDC /* Action_Man.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +353,7 @@
 				05D14C2A2C0A9DFC005D1047 /* CategoryOptionsSubview.swift in Sources */,
 				05D14C242C0A9D97005D1047 /* DismissButton.swift in Sources */,
 				052263032C0CE968002095CA /* FoodRow.swift in Sources */,
+				0567A9F92CA7B71C001E7EDC /* GlassViewModifier.swift in Sources */,
 				05D14C1C2C0A9D51005D1047 /* CreateMealView.swift in Sources */,
 				05D14C0C2C0A9AE9005D1047 /* FoodDataModel.xcdatamodeld in Sources */,
 				05D14C282C0A9DDC005D1047 /* FoodDetailedRowView.swift in Sources */,
@@ -495,6 +505,7 @@
 				DEVELOPMENT_TEAM = P6UNQT2KX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FoodNote/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByteLogs;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -528,6 +539,7 @@
 				DEVELOPMENT_TEAM = P6UNQT2KX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FoodNote/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByteLogs;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

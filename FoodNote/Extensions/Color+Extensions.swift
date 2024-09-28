@@ -10,4 +10,5 @@ import SwiftUI
 extension Color {
     static let darkPurple = Color(red: 72/255, green: 61/255, blue: 139/255)
     static let lavenderColor = Color(red: 200/255, green: 162/255, blue: 200/255)
+    static let highligterPink = Color(red: 255/255, green: 182/255, blue: 193/255).opacity(0.3)
 }

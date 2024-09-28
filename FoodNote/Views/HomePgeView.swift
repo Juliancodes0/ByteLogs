@@ -55,7 +55,7 @@ struct HomePgeView: View , DataReloadDelegate {
     @State private var showAddMealSheet: Bool = false
     @State private var showViewAllMealsSheet: Bool = false
     @State private var scrollViewXOffset: CGFloat = 0
-    @State private var scrollViewOpacity: Double = 1
+//    @State private var scrollViewOpacity: Double = 1
     @State private var showWeightLog: Bool = false
     @State var buttonShouldBeActive: Bool = true
     @State var opacityIsMuted: Bool = false
@@ -200,7 +200,7 @@ extension HomePgeView {
                     Text("What's for breakfast? ☕️")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             } else {
                 ForEach(allUsableFoodObjects, id: \.id) { food in
                         FoodRow(food: food, callback: {
@@ -213,17 +213,14 @@ extension HomePgeView {
                     Text("Add?")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             }
         }
         .hideScrollBar()
         .padding()
         .frame(width: 320, height: 160)
-            .listStyle(.plain)
-            .background() {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(Color.darkPurple)
-            }
+        .listStyle(.plain)
+            .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
     }
         
     var lunchList: some View {
@@ -240,7 +237,7 @@ extension HomePgeView {
                     Text("What's for lunch? 🥗")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             } else {
                 ForEach(allUsableFoodObjects, id: \.id) { food in
                     FoodRow(food: food, callback: {
@@ -253,7 +250,7 @@ extension HomePgeView {
                     Text("More lunch items?")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             }
         }
 
@@ -261,15 +258,11 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .background() {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(Color.darkPurple)
-        }
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
     }
     
     var dinnerList: some View {
         List {
-
             let everything = viewModel.everything.filter({$0.category == 3})
             let everythingWithDate = everything.filter({$0.date != nil})
             let allUsableFoodObjects = everythingWithDate.filter({$0.date!.isSameDay(as: self.date)})
@@ -281,7 +274,7 @@ extension HomePgeView {
                     Text("What's for dinner? 🥦")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             } else {
                 ForEach(allUsableFoodObjects, id: \.id) { food in
                     FoodRow(food: food, callback: {
@@ -294,17 +287,14 @@ extension HomePgeView {
                     Text("Still hungry?")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             }
         }
         .hideScrollBar()
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .background() {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(Color.darkPurple)
-        }
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
     }
     
     var snackList: some View {
@@ -316,11 +306,11 @@ extension HomePgeView {
             if allUsableFoodObjects.count < 1 {
                 Button(action: {
                     showAddFoodSnack = true
-                }, label: {
-                    Text("Snacks? 😋")
+                    }, label: {
+                        Text("Snacks? 😋")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
+                }).listRowBackground(Color.clear)
             } else {
                 ForEach(allUsableFoodObjects, id: \.id) { food in
                     FoodRow(food: food, callback: {
@@ -333,21 +323,53 @@ extension HomePgeView {
                     Text("More snacks? 🍉")
                         .bold()
                         .foregroundStyle(Color.blue)
-                })
-
+                }).listRowBackground(Color.clear)
             }
         }
         .hideScrollBar()
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .background() {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(Color.darkPurple)
-        }
-
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
     }
     
+//    var snackList: some View {
+//        List {
+//            let everything = viewModel.everything.filter({$0.category == 4})
+//            let everythingWithDate = everything.filter({$0.date != nil})
+//            let allUsableFoodObjects = everythingWithDate.filter({$0.date!.isSameDay(as: self.date)})
+//
+//            if allUsableFoodObjects.count < 1 {
+//                Button(action: {
+//                    showAddFoodSnack = true
+//                }, label: {
+//                    Text("Snacks? 😋")
+//                        .bold()
+//                        .foregroundStyle(Color.blue)
+//                }).listRowBackground(Color.clear)
+//            } else {
+//                ForEach(allUsableFoodObjects, id: \.id) { food in
+//                    FoodRow(food: food, callback: {
+//                        self.reloadData()
+//                    }, date: self.date)
+//                }
+//                Button(action: {
+//                    showAddFoodSnack = true
+//                }, label: {
+//                    Text("More snacks? 🍉")
+//                        .bold()
+//                        .foregroundStyle(Color.blue)
+//                })
+//                .listRowBackground(Color.clear)
+//            }
+//        }
+//        .hideScrollBar()
+//        .padding()
+//        .frame(width: 320, height: 160)
+//        .listStyle(.plain)
+//        .glass(cornerRadius: 20, fill: .yellow.opacity(0.4))
+//    }
+
     ///Plus Button inside of and HStack
     var plusButtonHStack: some View {
         HStack {

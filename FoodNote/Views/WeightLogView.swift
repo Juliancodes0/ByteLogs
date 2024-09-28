@@ -116,11 +116,12 @@ struct WeightLogView: View {
                     if viewModel.loggedWeights.count > 0 {
                         List(viewModel.loggedWeights.sorted(by: {$0.dateLogged > $1.dateLogged})) { weightData in
                             WeightCell(weightModel: weightData, delegate: viewModel.self, user: user)
-                                .background() {
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .foregroundStyle(Color.white)
-                                        .shadow(radius: 1)
-                                }
+                                .glass(cornerRadius: 10, fill: .yellow)
+//                                .background() {
+//                                    RoundedRectangle(cornerRadius: 5)
+//                                        .foregroundStyle(Color.white)
+//                                        .shadow(radius: 1)
+//                                }
                                 .padding()
                         }.listStyle(.plain)
                           
@@ -129,10 +130,15 @@ struct WeightLogView: View {
                             Button(action: {
                                 goToLogWeightView = true
                             }, label: {
-                                Text("Log your weight")
-                                    .bold()
+                                HStack {
+                                    Text("Log your weight")
+                                        .bold()
+                                    Image(systemName: "pencil")
+                                        .foregroundStyle(Color.yellow)
+                                }
                             })
                         }
+
                     }
                 }
                     

@@ -11,6 +11,7 @@ struct FoodRow: View {
     let food: FoodItemProtocol
     var callback: ( () -> ()?)?
     let date: Date
+    @State var showLineThrough: Bool = false
     @State var openMealDetails: Bool = false
     @State var editFood: Bool = false
     @State var editMeal: Bool = false
@@ -37,13 +38,17 @@ struct FoodRow: View {
     var body: some View {
         HStack {
             Text(food.title)
+                .font(.custom("Action_Man", size: 20))
+                .strikethrough(showLineThrough)
             Spacer()
             Text("\(food.calories) \(stringForCalories())")
+                .strikethrough(showLineThrough)
             if food.isMeal {
                 Button(action: {
                     self.openMealDetails = true
                 }, label: {
                     Image(systemName: "fork.knife.circle.fill")
+                        .strikethrough(showLineThrough)
                 })
             }
         }.foregroundStyle(Color.black)
@@ -51,18 +56,22 @@ struct FoodRow: View {
         .listRowBackground(
             ZStack {
                 if !food.isMeal {
-                    Color.white
+                    Color.clear
                 } else {
-                        Color.white
-                        Color.mint.opacity(0.2)
+                    Color.highligterPink.opacity(1)
                     }
-            }
+            }.cornerRadius(5)
         )
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             
             Button(action: {
-                deleteFoodItem(item: food)
-                callback?()
+                withAnimation(.linear(duration: 0.01)) {
+                    showLineThrough = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.77) {
+                    deleteFoodItem(item: food)
+                    callback?()
+                }
             }, label: {
                 Text("REMOVE")
                     .bold()

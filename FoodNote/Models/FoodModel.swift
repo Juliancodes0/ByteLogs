@@ -28,7 +28,7 @@ struct FoodModel : Identifiable, FoodItemProtocol {
     var isMeal: Bool {
         return false
     }
-    var meal: NSSet? {
-        return food.meals
-    } //IF NIL, do something...
+//    var meals: NSSet? {
+//        return food.meals
+//    } //IF NIL, do something...
 }

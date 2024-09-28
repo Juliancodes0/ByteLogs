@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 
 struct StartingView: View {
+    @State var buttonTapped: Bool = false
     var completion: () -> ()
     
     var body: some View {
@@ -18,6 +19,8 @@ struct StartingView: View {
             VStack {
                 Spacer()
                 Text("Welcome to ByteLogs")
+                    .padding()
+                    .glass(cornerRadius: 10)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -35,27 +38,35 @@ struct StartingView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    completion()
-                }) {
-                    Text("NEXT")
-                        .bold()
-                        .frame(width: 200, height: 50)
-                        .background(Color.white)
-                        .foregroundColor(.blue)
-                        .cornerRadius(25)
-                        .shadow(radius: 10)
-                }
-                .padding(.bottom, 30)
-                
+                nextButton
             }
-            .padding()
+            .environment(\.colorScheme, .light)
         }
-        .environment(\.colorScheme, .light)
     }
 }
+
+
+extension StartingView {
+    var nextButton: some View {
+        Button {
+            completion()
+            withAnimation(.spring(.smooth)) {
+                buttonTapped = true
+            }
+        } label: {
+            Text("NEXT")
+                .padding(buttonTapped ? 15 : 20)
+                .glass(cornerRadius: 10)
+                .shadow(radius: 5)
+                .foregroundStyle(Color.white)
+                .bold()
+        }
+    }
+}
+
+
+
 
 #Preview {
     StartingView(completion: {})
 }
-
