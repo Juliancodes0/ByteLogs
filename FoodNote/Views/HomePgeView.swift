@@ -220,7 +220,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-            .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
+        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
     }
         
     var lunchList: some View {
@@ -258,7 +258,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
+        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
     }
     
     var dinnerList: some View {
@@ -294,7 +294,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
+        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
     }
     
     var snackList: some View {
@@ -330,7 +330,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4)
+        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
     }
     
 //    var snackList: some View {

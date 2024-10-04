@@ -144,6 +144,8 @@ struct AddFoodSheet: View {
     let foodEditing: FoodModel?
     @State var showErrorLabel: Bool = false
     @State var aMealWasAdded: Bool = false
+    @State var foodSearched: String = ""
+    @FocusState var foodSearchFocus: Bool
     
     private var energyUnitString: String {
         switch UnitManager.shared.getUserEnergyPreference() {
@@ -154,35 +156,61 @@ struct AddFoodSheet: View {
         }
     }
     
+    private var foodItemsDisplayed: [FoodItemProtocol] {
+        guard !foodSearched.isEmpty else {
+            let mostRecentFoodItems = viewModel.allFoodsAndMeals
+            return mostRecentFoodItems
+        }
+        return viewModel.allFoods.filter { foods in
+            foods.title.lowercased().contains(self.foodSearched.lowercased())
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
+                .onTapGesture {
+                    self.foodSearchFocus = false
+                }
             VStack {
+                if self.foodEditing == nil {
+                    HStack(spacing: 5) {
+                        Image(systemName: "magnifyingglass")
+                            .padding(.trailing, 10)
+                            .onTapGesture {
+                                foodSearchFocus = true
+                            }
+                        TextField("Search", text: $foodSearched)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: UIScreen.main.bounds.width / 1.4, height: 20)
+                            .focused($foodSearchFocus)
+                            .submitLabel(.search)
+                    }
+                    .padding(.top, 30)
+                }
+
                 //Possibly want to show 20 most recent...
                 if self.foodEditing == nil {
                     ScrollView(.horizontal, showsIndicators: true) {
                         HStack(spacing: 20) {
                             
-                            let mostRecentFoodItems = viewModel.allFoodsAndMeals
-                                .sorted(by: { $0.date ?? Date() > $1.date ?? Date() }) // Sort by date in descending order
+                            let itemsToShow = foodItemsDisplayed
+                                .sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
                                 .reduce(into: [String: FoodItemProtocol](), { result, foodItem in
                                     if result[foodItem.title] == nil {
-                                        //if title is NOT found/nil
-                                        result[foodItem.title] = foodItem //adds foodItem to the dictionary
+                                        result[foodItem.title] = foodItem
                                     }
                                 })
                                 .values
                                 .sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
                                 .prefix(30)
-//                                .filter({$0.category != 5})
                             
-                            
-                            ForEach(mostRecentFoodItems, id: \.id) { foodItem in
+                            ForEach(itemsToShow, id: \.id) { foodItem in
                                 FoodAddBox(foodItem: foodItem, date: self.dateForFood, categoryString: self.$selectedMeal, callbackMethod: {
                                     delegate?.reloadData()
                                 })
                             }
-                        }.padding(.top, 30)
+                        }.padding(.top, 70)
                             .padding(.leading, 12)
                             .padding(.trailing, 12)
                         
