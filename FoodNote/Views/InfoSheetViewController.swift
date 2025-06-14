@@ -116,8 +116,7 @@ class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray.withAlphaComponent(0.3)
-        
+        view.backgroundColor = .white
         view.overrideUserInterfaceStyle = .light
         self.setup()
     }
