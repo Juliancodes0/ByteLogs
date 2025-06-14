@@ -48,6 +48,7 @@
 		05D14C3C2C0A9ED0005D1047 /* MealBoxComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */; };
 		05D14C3E2C0A9EE9005D1047 /* MealBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3D2C0A9EE9005D1047 /* MealBox.swift */; };
 		05EE701B2C1A9A9400FCA48D /* UnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE701A2C1A9A9400FCA48D /* UnitManager.swift */; };
+		B9C119992DFDF7E20081595C /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C119982DFDF7E20081595C /* Stroke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBoxComponent2.swift; sourceTree = "<group>"; };
 		05D14C3D2C0A9EE9005D1047 /* MealBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBox.swift; sourceTree = "<group>"; };
 		05EE701A2C1A9A9400FCA48D /* UnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitManager.swift; sourceTree = "<group>"; };
+		B9C119982DFDF7E20081595C /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			children = (
 				05D14C2B2C0A9E09005D1047 /* HideListIndicatorsViewModifier.swift */,
 				0567A9F82CA7B70E001E7EDC /* GlassViewModifier.swift */,
+				B9C119982DFDF7E20081595C /* Stroke.swift */,
 				0567AA022CA7D1B0001E7EDC /* Action_Man.ttf */,
 			);
 			path = ViewModifiers;
@@ -344,6 +347,7 @@
 				05D14C262C0A9DB2005D1047 /* MealDetails.swift in Sources */,
 				05D14C162C0A9D09005D1047 /* HomePgeView.swift in Sources */,
 				05D14C222C0A9D87005D1047 /* TopRowView.swift in Sources */,
+				B9C119992DFDF7E20081595C /* Stroke.swift in Sources */,
 				05D14BFC2C0A99E8005D1047 /* Date+Extensions.swift in Sources */,
 				05D14C302C0A9E4D005D1047 /* FoodModel.swift in Sources */,
 				05D14C2C2C0A9E09005D1047 /* HideListIndicatorsViewModifier.swift in Sources */,
@@ -500,7 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodNote/Preview Content\"";
 				DEVELOPMENT_TEAM = P6UNQT2KX2;
 				ENABLE_PREVIEWS = YES;
@@ -516,7 +520,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uipractice.kit.ui.FoodNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -534,7 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodNote/Preview Content\"";
 				DEVELOPMENT_TEAM = P6UNQT2KX2;
 				ENABLE_PREVIEWS = YES;
@@ -550,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uipractice.kit.ui.FoodNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

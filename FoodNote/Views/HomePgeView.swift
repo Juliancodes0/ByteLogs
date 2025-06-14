@@ -62,7 +62,7 @@ struct HomePgeView: View , DataReloadDelegate {
 //    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack {
-            Color.white.ignoresSafeArea()
+            LinearGradient.glassGradientColors.ignoresSafeArea()
             VStack {
                 Spacer()
                 TopRowView(user: user, date: $date, calories: $caloriesForDay, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: self.animateBackward, completionRightToggle: self.animateForward, reloadDelegate: self)
@@ -220,7 +220,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4, shadowRadius: 5)
     }
         
     var lunchList: some View {
@@ -258,7 +258,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4, shadowRadius: 5)
     }
     
     var dinnerList: some View {
@@ -294,7 +294,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4, shadowRadius: 5)
     }
     
     var snackList: some View {
@@ -330,7 +330,7 @@ extension HomePgeView {
         .padding()
         .frame(width: 320, height: 160)
         .listStyle(.plain)
-        .glass(cornerRadius: 20, fill: .purple, opacity: 0.4, shadowRadius: 5)
+        .glass(cornerRadius: 20, fill: .yellow, opacity: 0.4, shadowRadius: 5)
     }
     
 //    var snackList: some View {
@@ -381,15 +381,28 @@ extension HomePgeView {
                 Image(systemName: "plus")
                     .bold()
                     .padding()
-                    .foregroundStyle(Color.white)
-                    .background() {
+                    .foregroundStyle(Color.gray)
+                    .background {
                         Circle()
-                            .foregroundStyle(Color.black)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.25),
+                                        Color.blue.opacity(0.15),
+                                        Color.white.opacity(0.1),
+                                        Color.clear
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .stroke(Color.gray, lineWidth: 1)
                     }
             })
-        }.padding(.trailing)
+        }
+        .padding(.trailing)
     }
-    
+
     ///Tips Button inside of and HStack
     var tipsButtonHStack: some View {
         HStack {
@@ -399,14 +412,28 @@ extension HomePgeView {
                 Image(systemName: "chart.xyaxis.line")
                     .bold()
                     .padding()
-                    .foregroundStyle(Color.white)
-                    .background() {
+                    .foregroundStyle(Color.gray)
+                    .background {
                         Circle()
-                            .foregroundStyle(Color.black)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.25),
+                                        Color.blue.opacity(0.15),
+                                        Color.white.opacity(0.1),
+                                        Color.clear
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .stroke(Color.gray, lineWidth: 1)
                     }
             })
-        }.padding(.leading)
+        }
+        .padding(.leading)
     }
+
     
     var plusMenuOptions: some View {
         VStack(spacing: 12) {

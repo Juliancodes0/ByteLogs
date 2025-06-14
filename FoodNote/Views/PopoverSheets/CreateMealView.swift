@@ -149,7 +149,7 @@ struct CreateMealView: View {
     
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)
+            LinearGradient.glassGradientColors.ignoresSafeArea()
             VStack(spacing: 30) {
                 DismissButton(action: {
                     self.dismiss.callAsFunction()

@@ -168,7 +168,7 @@ struct AddFoodSheet: View {
     
     var body: some View {
         ZStack {
-            Color.white.ignoresSafeArea()
+            LinearGradient.glassGradientColors.ignoresSafeArea()
                 .onTapGesture {
                     self.foodSearchFocus = false
                 }

@@ -36,8 +36,7 @@ class AllMealsViewModel : ObservableObject {
         mealToSave.category = category
         mealToSave.title = meal.title
         manager.save()
-        
-        
+
     }
 }
 
@@ -160,7 +159,7 @@ struct AllMealsView: View, MealReloaderDelegate {
     }
     var body: some View {
         ZStack {
-            Color.white.ignoresSafeArea()
+            LinearGradient.glassGradientColors.ignoresSafeArea()
                 VStack {
                     DismissButton {
                         self.dismiss()
@@ -176,24 +175,33 @@ struct AllMealsView: View, MealReloaderDelegate {
                         Text("Swipe an item to add or delete")
                             .font(.callout)
                             .fontDesign(.rounded)
-                            .foregroundStyle(Color.gray)
+                            .foregroundStyle(Color.white)
                             .bold()
                     }
                     List {
                         if viewModel.meals.count > 0 {
                             ForEach(filteredMeals, id: \.id) { meal in
                                 MealRowItem(meal: meal, dateToAdd: self.date, viewModel: viewModel, mealReloader: self, categoryOption: self.categoryOption, aMealWasAdded: $aMealWasAdded)
+                                    .listRowBackground(Color.white.opacity(0.4))
                             }
                         } else {
                             Button(action: {
                                 self.addMeal = true
                             }, label: {
-                                Text("Create your first meal 🍏")
-                                    .foregroundStyle(Color.blue)
+                                Text("🥑🍣 Click to create meal 🍩🍉")
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [Color.indigo, Color.pink],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )                                    .stroke(color: .glass, width: 0.7)
                                     .bold()
                             })
+                            .listRowBackground(Color.clear)
                         }
                     }.listStyle(.plain)
+                        
                     HStack {
                         Spacer()
                         Button(action: {

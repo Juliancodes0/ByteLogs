@@ -98,7 +98,7 @@ struct WeightLogView: View {
     }
     var body: some View {
         ZStack {
-            Color.white.ignoresSafeArea()
+            LinearGradient.glassGradientColors.ignoresSafeArea()
             VStack() {
                 DismissButton(action: {
                     self.dismiss()
@@ -116,6 +116,7 @@ struct WeightLogView: View {
                     if viewModel.loggedWeights.count > 0 {
                         List(viewModel.loggedWeights.sorted(by: {$0.dateLogged > $1.dateLogged})) { weightData in
                             WeightCell(weightModel: weightData, delegate: viewModel.self, user: user)
+                                .listRowBackground(Color.clear)
                                 .glass(cornerRadius: 10, fill: .yellow)
 //                                .background() {
 //                                    RoundedRectangle(cornerRadius: 5)
@@ -135,43 +136,112 @@ struct WeightLogView: View {
                                         .bold()
                                     Image(systemName: "pencil")
                                         .foregroundStyle(Color.yellow)
+                                    
                                 }
                             })
+                            .listRowBackground(
+                                LinearGradient(
+                                    stops: [
+                                        Gradient.Stop(color: Color.pink.opacity(0.3), location: 0.0),
+                                        Gradient.Stop(color: Color.blue.opacity(0.4), location: 0.5),
+                                        Gradient.Stop(color: Color.purple.opacity(0.2), location: 1.0)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
                         }
-
+                        .listStyle(.plain)
                     }
                 }
                     
                 Spacer()
+//                HStack {
+//                    Button(action: {
+//                        goToLogWeightView = true
+//                    }, label: {
+//                            Image(systemName: "scalemass")
+//                                .resizable()
+//                                .foregroundStyle(Color.white)
+//                                .frame(width: 20, height: 20)
+//                                .padding()
+//                                .background {
+//                                    Circle()
+//                                        .foregroundColor(.black)
+//                                }
+//                    })
+//                    Spacer()
+//                    Button(action: {
+//                        self.updateCaloricGoal = true
+//                    }, label: {
+//                        Image(systemName: "slider.horizontal.3")
+//                            .resizable()
+//                            .foregroundStyle(Color.white)
+//                            .frame(width: 20, height: 20)
+//                            .padding()
+//                            .background {
+//                                Circle()
+//                                    .foregroundColor(.black)
+//                            }
+//                    })
+//                }.padding()
                 HStack {
                     Button(action: {
                         goToLogWeightView = true
                     }, label: {
                         Image(systemName: "scalemass")
                             .resizable()
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(Color.gray)
                             .frame(width: 20, height: 20)
                             .padding()
                             .background {
                                 Circle()
-                                    .foregroundColor(.black)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                Color.white.opacity(0.25),
+                                                Color.blue.opacity(0.15),
+                                                Color.white.opacity(0.1),
+                                                Color.clear
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .stroke(Color.gray, lineWidth: 1)
                             }
                     })
+                    
                     Spacer()
+                    
                     Button(action: {
                         self.updateCaloricGoal = true
                     }, label: {
                         Image(systemName: "slider.horizontal.3")
-                        .resizable()
-                        .foregroundStyle(Color.white)
-                        .frame(width: 20, height: 20)
-                        .padding()
-                        .background {
-                            Circle()
-                                .foregroundColor(.black)
-                        }
+                            .resizable()
+                            .foregroundStyle(Color.gray)
+                            .frame(width: 20, height: 20)
+                            .padding()
+                            .background {
+                                Circle()
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                Color.white.opacity(0.25),
+                                                Color.blue.opacity(0.15),
+                                                Color.white.opacity(0.1),
+                                                Color.clear
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .stroke(Color.gray, lineWidth: 1)
+                            }
                     })
-                }.padding()
+                }
+                .padding()
+
             }
         }.environment(\.colorScheme, .light)
         .onAppear() {

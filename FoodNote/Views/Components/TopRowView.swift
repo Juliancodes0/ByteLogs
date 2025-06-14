@@ -22,26 +22,46 @@ struct TopRowView : View {
             Text("ByteLogs")
                 .font(.caption)
                 .bold()
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color.black)
+                .stroke(color: .cyan.opacity(0.2), width: 0.5)
             Divider()
-            Text("Goal: \(user.getUserCalorieGoal())") //consumed that day - run some calculation
-                .font(.subheadline)
-                .bold()
-                .foregroundStyle(Color.gray)
-            
-            Text("Total: \(calories)")
-                .font(.subheadline)
-                .bold()
-                .foregroundStyle(Color.gray)
-            
-            Text("Remaining: \(Int16(user.getUserCalorieGoal()) - self.calories)") //goal minus consumed
-                .font(.subheadline)
-                .bold()
-                .foregroundStyle(Color.gray)
+                VStack {
+                    Text("Goal: \(user.getUserCalorieGoal())") //consumed that day - run some calculation
+                        .font(.subheadline)
+                        .bold()
+                    Text("Total: \(calories)")
+                        .font(.subheadline)
+                        .bold()
+                    Text("Remaining: \(Int16(user.getUserCalorieGoal()) - self.calories)") //goal minus consumed
+                        .font(.subheadline)
+                        .bold()
+                }
+                .foregroundStyle(
+                    LinearGradient(colors: [.black, .indigo], startPoint: .leading, endPoint: .trailing)
+                )
+                .stroke(color: Color.glass, width: 0.3)
             Divider()
         }.opacity(self.opacityIsMuted ? 0 : 1)
             CustomDatePicker(date: $date, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: completionLeftToggle, completionRightToggle: completionRightToggle, reloadDelegate: reloadDelegate)
                 .padding(.top, 1)
         }.preferredColorScheme(.light)
     }
+}
+
+#Preview {
+    @State var date = Date()
+    @State var calories: Int16 = 1400
+    @State var buttonShouldBeActive = true
+    @State var opacityIsMuted = false
+
+    return TopRowView(
+        user: UserBasicsManager(), // ensure this works
+        date: $date,
+        calories: $calories,
+        buttonShouldBeActive: $buttonShouldBeActive,
+        opacityIsMuted: $opacityIsMuted,
+        completionLeftToggle: {},
+        completionRightToggle: {},
+        reloadDelegate: nil
+    )
 }

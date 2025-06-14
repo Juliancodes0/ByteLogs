@@ -73,8 +73,8 @@ class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("DONE", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = UIColor.systemBlue
-        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         return button
@@ -84,6 +84,7 @@ class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
         let button = UIButton(type: .system)
         let image = UIImage(systemName: "globe")
         button.setImage(image, for: .normal)
+        button.tintColor = UIColor.gray
         button.addTarget(self, action: #selector(presentUnitOptionsViewController), for: .touchUpInside)
         return button
     }()
@@ -115,7 +116,8 @@ class InfoSheetViewController: UIViewController, ReloadStringDataDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .gray.withAlphaComponent(0.3)
+        
         view.overrideUserInterfaceStyle = .light
         self.setup()
     }
