@@ -48,6 +48,8 @@
 		05D14C3C2C0A9ED0005D1047 /* MealBoxComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */; };
 		05D14C3E2C0A9EE9005D1047 /* MealBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3D2C0A9EE9005D1047 /* MealBox.swift */; };
 		05EE701B2C1A9A9400FCA48D /* UnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE701A2C1A9A9400FCA48D /* UnitManager.swift */; };
+		B9BFDD342E9826260078C908 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFDD332E9826260078C908 /* NoteModel.swift */; };
+		B9BFDD362E9828940078C908 /* NotepadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFDD352E9828940078C908 /* NotepadView.swift */; };
 		B9C119992DFDF7E20081595C /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C119982DFDF7E20081595C /* Stroke.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBoxComponent2.swift; sourceTree = "<group>"; };
 		05D14C3D2C0A9EE9005D1047 /* MealBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBox.swift; sourceTree = "<group>"; };
 		05EE701A2C1A9A9400FCA48D /* UnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitManager.swift; sourceTree = "<group>"; };
+		B9BFDD332E9826260078C908 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		B9BFDD352E9828940078C908 /* NotepadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadView.swift; sourceTree = "<group>"; };
 		B9C119982DFDF7E20081595C /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +199,7 @@
 				05D14C192C0A9D3D005D1047 /* AddFoodSheet.swift */,
 				05D14C1B2C0A9D51005D1047 /* CreateMealView.swift */,
 				05D14C1D2C0A9D60005D1047 /* AllMealsView.swift */,
+				B9BFDD352E9828940078C908 /* NotepadView.swift */,
 			);
 			path = PopoverSheets;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				05EE701A2C1A9A9400FCA48D /* UnitManager.swift */,
 				05D14C312C0A9E5F005D1047 /* MealModel.swift */,
 				05D14C332C0A9E76005D1047 /* LoggedWeightModel.swift */,
+				B9BFDD332E9826260078C908 /* NoteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				05D14C3E2C0A9EE9005D1047 /* MealBox.swift in Sources */,
 				05D14C262C0A9DB2005D1047 /* MealDetails.swift in Sources */,
 				05D14C162C0A9D09005D1047 /* HomePgeView.swift in Sources */,
+				B9BFDD362E9828940078C908 /* NotepadView.swift in Sources */,
 				05D14C222C0A9D87005D1047 /* TopRowView.swift in Sources */,
 				B9C119992DFDF7E20081595C /* Stroke.swift in Sources */,
 				05D14BFC2C0A99E8005D1047 /* Date+Extensions.swift in Sources */,
@@ -359,6 +366,7 @@
 				052263032C0CE968002095CA /* FoodRow.swift in Sources */,
 				0567A9F92CA7B71C001E7EDC /* GlassViewModifier.swift in Sources */,
 				05D14C1C2C0A9D51005D1047 /* CreateMealView.swift in Sources */,
+				B9BFDD342E9826260078C908 /* NoteModel.swift in Sources */,
 				05D14C0C2C0A9AE9005D1047 /* FoodDataModel.xcdatamodeld in Sources */,
 				05D14C282C0A9DDC005D1047 /* FoodDetailedRowView.swift in Sources */,
 				05EE701B2C1A9A9400FCA48D /* UnitManager.swift in Sources */,

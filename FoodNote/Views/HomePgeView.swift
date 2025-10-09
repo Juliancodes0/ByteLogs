@@ -437,33 +437,55 @@ extension HomePgeView {
     
     var plusMenuOptions: some View {
         VStack(spacing: 12) {
-            Button("+ FOOD", action: {
+            Button("Add Food", action: {
                 withAnimation(.easeInOut(duration: 1.9)) {
                     showPlusMenu = false
                 }
                 showAddFoodSheetBreakfastDefault = true
             })
             
-            Button("+ CREATE MEAL", action: {
+            Button("Create new meal", action: {
                 withAnimation(.easeInOut(duration: 1.9)) {
                     showPlusMenu = false
                 }
                 showAddMealSheet = true
             })
             
-            Button("VIEW MEALS", action: {
+            Button("View all meals", action: {
                 withAnimation(.easeInOut(duration: 1.9)) {
                     showPlusMenu = false
                 }
                 self.showViewAllMealsSheet = true
             })
+            
+            Button {
+                withAnimation {
+                    showPlusMenu = false
+                }
+                //show add note sheet
+            } label: {
+                HStack {
+                    Image(systemName: "list.clipboard")
+                        .resizable()
+                        .frame(width: 10, height: 10)
+                    Text("Take a note")
+                }
+            }
+
                         
-            Button("DONE", action: {
+            Button(action: {
                 withAnimation(.bouncy, {
                     self.showPlusMenu = false
                 })
+            }, label: {
+                Text("DONE")
+                    .padding(.horizontal)
+                    .foregroundStyle(Color.white)
+                    .bold()
             })
-            
+            .background() {
+                RoundedRectangle(cornerRadius: 6)
+            }
             
         }.padding()
             .foregroundStyle(Color.blue)

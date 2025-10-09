@@ -127,4 +127,22 @@ class CoreDataManager {
             return []
         }
     }
+    
+    func getAllNoteEntities () -> [NoteEntity] {
+        let fetchRequest: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
+    func deleteNote(_ note: NoteEntity) {
+        persistentContainer.viewContext.delete(note)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+        }
+    }
 }
