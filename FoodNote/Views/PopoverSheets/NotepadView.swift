@@ -8,19 +8,36 @@
 import SwiftUI
 
 class NotepadViewModel: ObservableObject {
-    @Published var text: String = ""
     
-    func save(note: String) {
-        
+    func save(note: String, date: Date, onComplete: () -> ()) {
+        guard !note.isEmpty else {
+            onComplete()
+            return
+        }
+        let manager = CoreDataManager.shared
+        let newNote = NoteEntity(context: manager.persistentContainer.viewContext)
+        newNote.date = date
+        newNote.notes = note
+        manager.save()
+        onComplete()
     }
 }
 
 import SwiftUI
 
 struct NotepadView: View {
+    @State var text: String = ""
+    private var saveText: String {
+        switch text.isEmpty {
+        case true:
+            return "DONE"
+        case false:
+            return "SAVE"
+        }
+    }
     let dateOfNote: Date
     @StateObject var viewModel: NotepadViewModel = NotepadViewModel()
-    
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             LinearGradient.glassGradientColors
@@ -33,7 +50,10 @@ struct NotepadView: View {
                     
                     HStack {
                         Spacer()
-                        Button("SAVE") {
+                        Button(saveText) {
+                            viewModel.save(note: self.text, date: dateOfNote, onComplete: {
+                                self.dismiss()
+                            })
                         }
                         .bold()
                         .foregroundColor(.blue)
@@ -46,18 +66,13 @@ struct NotepadView: View {
 
                 Divider()
 
-                TextEditor(text: $viewModel.text)
+                TextEditor(text: $text)
                     .tint(.red)
                     .padding()
             }
         }
     }
 }
-
-
-
-
-
 
 #Preview {
     NotepadView(dateOfNote: Date())

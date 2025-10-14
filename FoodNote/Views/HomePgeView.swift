@@ -76,6 +76,9 @@ struct HomePgeView: View , DataReloadDelegate {
                         breakfastList
                             .opacity(opacityIsMuted ? 0.3 : 1)
                             .preferredColorScheme(.light)
+                            .onTapGesture {
+                                self.showAddFoodSheetBreakfastDefault = true
+                            }
                         Text("Lunch")
                             .opacity(opacityIsMuted ? 0.3 : 1)
                             .foregroundStyle(Color.black)
@@ -83,6 +86,9 @@ struct HomePgeView: View , DataReloadDelegate {
                         lunchList
                             .opacity(opacityIsMuted ? 0.5 : 1)
                             .preferredColorScheme(.light)
+                            .onTapGesture {
+                                self.showAddFoodLunch = true
+                            }
                         Text("Dinner")
                             .foregroundStyle(Color.black)
                             .bold()
@@ -90,6 +96,9 @@ struct HomePgeView: View , DataReloadDelegate {
                         dinnerList
                             .opacity(opacityIsMuted ? 0.7 : 1)
                             .preferredColorScheme(.light)
+                            .onTapGesture {
+                                self.showAddFoodDinner = true
+                            }
                         Text("Snack")
                             .opacity(opacityIsMuted ? 0.8 : 1)
                             .foregroundStyle(Color.black)
@@ -97,6 +106,9 @@ struct HomePgeView: View , DataReloadDelegate {
                         snackList
                             .opacity(opacityIsMuted ? 0.85 : 1)
                             .preferredColorScheme(.light)
+                            .onTapGesture {
+                                self.showAddFoodSnack = true
+                            }
                     }
                     .offset(x: scrollViewXOffset)
                     
