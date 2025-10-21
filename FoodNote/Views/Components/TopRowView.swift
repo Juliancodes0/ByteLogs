@@ -13,6 +13,7 @@ struct TopRowView : View {
     @Binding var calories: Int16
     @Binding var buttonShouldBeActive: Bool
     @Binding var opacityIsMuted: Bool
+    @State var goToCalorieAdjustmentView: Bool = false
     var completionLeftToggle: ( () -> ())?
     var completionRightToggle: ( () -> ())?
     var reloadDelegate: DataReloadDelegate?
@@ -35,6 +36,8 @@ struct TopRowView : View {
                     Text("Remaining: \(Int16(user.getUserCalorieGoal()) - self.calories)") //goal minus consumed
                         .font(.subheadline)
                         .bold()
+                }.onTapGesture {
+                    goToCalorieAdjustmentView = true
                 }
                 .foregroundStyle(
                     LinearGradient(colors: [.black, .indigo], startPoint: .leading, endPoint: .trailing)
@@ -45,6 +48,11 @@ struct TopRowView : View {
             CustomDatePicker(date: $date, buttonShouldBeActive: $buttonShouldBeActive, opacityIsMuted: $opacityIsMuted, completionLeftToggle: completionLeftToggle, completionRightToggle: completionRightToggle, reloadDelegate: reloadDelegate)
                 .padding(.top, 1)
         }.preferredColorScheme(.light)
+            .fullScreenCover(isPresented: $goToCalorieAdjustmentView) {
+                reloadDelegate?.reloadData()
+            } content: {
+                CaloriesView(user: user, seguedFromProgressView: true, calorieRecommendationAmount: user.calorieGoal)
+            }
     }
 }
 

@@ -213,12 +213,13 @@ extension HomePgeView {
 
             if allUsableFoodObjects.count < 1 {
                 Button(action: {
-                    showAddFoodSheetBreakfastDefault = true
+                        showAddFoodSheetBreakfastDefault = true
                 }, label: {
                     Text("What's for breakfast? ☕️")
                         .bold()
                         .foregroundStyle(Color.blue)
                 }).listRowBackground(Color.clear)
+                  
             } else {
                 ForEach(allUsableFoodObjects, id: \.id) { food in
                         FoodRow(food: food, callback: {
@@ -232,6 +233,7 @@ extension HomePgeView {
                         .bold()
                         .foregroundStyle(Color.blue)
                 }).listRowBackground(Color.clear)
+                    .disabled(self.opacityIsMuted)
             }
         }
         .hideScrollBar()
