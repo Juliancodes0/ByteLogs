@@ -48,6 +48,8 @@
 		05D14C3C2C0A9ED0005D1047 /* MealBoxComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */; };
 		05D14C3E2C0A9EE9005D1047 /* MealBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D14C3D2C0A9EE9005D1047 /* MealBox.swift */; };
 		05EE701B2C1A9A9400FCA48D /* UnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE701A2C1A9A9400FCA48D /* UnitManager.swift */; };
+		B909E9E22EA6EFBE00E37DF2 /* ViewDaysNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909E9E12EA6EFB100E37DF2 /* ViewDaysNotes.swift */; };
+		B909E9E42EA7F16200E37DF2 /* DeveloperOnlyViewOfAllNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909E9E32EA7F16200E37DF2 /* DeveloperOnlyViewOfAllNotes.swift */; };
 		B9BFDD342E9826260078C908 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFDD332E9826260078C908 /* NoteModel.swift */; };
 		B9BFDD362E9828940078C908 /* NotepadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFDD352E9828940078C908 /* NotepadView.swift */; };
 		B9C119992DFDF7E20081595C /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C119982DFDF7E20081595C /* Stroke.swift */; };
@@ -97,6 +99,8 @@
 		05D14C3B2C0A9ED0005D1047 /* MealBoxComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBoxComponent2.swift; sourceTree = "<group>"; };
 		05D14C3D2C0A9EE9005D1047 /* MealBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBox.swift; sourceTree = "<group>"; };
 		05EE701A2C1A9A9400FCA48D /* UnitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitManager.swift; sourceTree = "<group>"; };
+		B909E9E12EA6EFB100E37DF2 /* ViewDaysNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDaysNotes.swift; sourceTree = "<group>"; };
+		B909E9E32EA7F16200E37DF2 /* DeveloperOnlyViewOfAllNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperOnlyViewOfAllNotes.swift; sourceTree = "<group>"; };
 		B9BFDD332E9826260078C908 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		B9BFDD352E9828940078C908 /* NotepadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadView.swift; sourceTree = "<group>"; };
 		B9C119982DFDF7E20081595C /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				05D14C1B2C0A9D51005D1047 /* CreateMealView.swift */,
 				05D14C1D2C0A9D60005D1047 /* AllMealsView.swift */,
 				B9BFDD352E9828940078C908 /* NotepadView.swift */,
+				B909E9E12EA6EFB100E37DF2 /* ViewDaysNotes.swift */,
 			);
 			path = PopoverSheets;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				05D14C0A2C0A9AE9005D1047 /* FoodDataModel.xcdatamodeld */,
 				05D14C0D2C0A9C5D005D1047 /* CoreDataManager.swift */,
 				0542642D2C0CAF3A00DCE34A /* HapticManager.swift */,
+				B909E9E32EA7F16200E37DF2 /* DeveloperOnlyViewOfAllNotes.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				05D14C262C0A9DB2005D1047 /* MealDetails.swift in Sources */,
 				05D14C162C0A9D09005D1047 /* HomePgeView.swift in Sources */,
 				B9BFDD362E9828940078C908 /* NotepadView.swift in Sources */,
+				B909E9E42EA7F16200E37DF2 /* DeveloperOnlyViewOfAllNotes.swift in Sources */,
 				05D14C222C0A9D87005D1047 /* TopRowView.swift in Sources */,
 				B9C119992DFDF7E20081595C /* Stroke.swift in Sources */,
 				05D14BFC2C0A99E8005D1047 /* Date+Extensions.swift in Sources */,
@@ -361,6 +368,7 @@
 				05D14BEB2C0A99A6005D1047 /* FoodNoteApp.swift in Sources */,
 				05D14C202C0A9D76005D1047 /* CustomDatePicker.swift in Sources */,
 				056DC6BE2C116DF6008A200E /* MealReloaderDelegate.swift in Sources */,
+				B909E9E22EA6EFBE00E37DF2 /* ViewDaysNotes.swift in Sources */,
 				05D14C2A2C0A9DFC005D1047 /* CategoryOptionsSubview.swift in Sources */,
 				05D14C242C0A9D97005D1047 /* DismissButton.swift in Sources */,
 				052263032C0CE968002095CA /* FoodRow.swift in Sources */,

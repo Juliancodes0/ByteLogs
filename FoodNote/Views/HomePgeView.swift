@@ -54,6 +54,7 @@ struct HomePgeView: View , DataReloadDelegate {
     @State private var showAddFoodSnack: Bool = false
     @State private var showAddMealSheet: Bool = false
     @State private var showViewAllMealsSheet: Bool = false
+    @State private var goToTakeNote: Bool = false
     @State private var scrollViewXOffset: CGFloat = 0
 //    @State private var scrollViewOpacity: Double = 1
     @State private var showWeightLog: Bool = false
@@ -165,6 +166,11 @@ struct HomePgeView: View , DataReloadDelegate {
             self.viewModel.reloadData()
         }, content: {
             WeightLogView(user: self.user)
+        })
+        .fullScreenCover(isPresented: $goToTakeNote, onDismiss: {
+            //Dismiss
+        }, content: {
+            NotepadView(dateOfNote: self.date)
         })
         .onAppear() {
             self.viewModel.reloadData()
@@ -474,7 +480,7 @@ extension HomePgeView {
                 withAnimation {
                     showPlusMenu = false
                 }
-                //show add note sheet
+                goToTakeNote = true
             } label: {
                 HStack {
                     Image(systemName: "list.clipboard")

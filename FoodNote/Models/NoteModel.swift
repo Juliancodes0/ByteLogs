@@ -18,7 +18,9 @@ protocol NoteMock {
 
 struct NoteModel : NoteMock {
     let noteEntity: NoteEntity
-    var id: NSManagedObjectID
+    var id: NSManagedObjectID {
+        return noteEntity.objectID
+    }
     var date: Date {
         return noteEntity.date ?? Date()
     }

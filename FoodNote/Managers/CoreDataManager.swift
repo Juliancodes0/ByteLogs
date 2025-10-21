@@ -90,16 +90,15 @@ class CoreDataManager {
     }
     
     
-//    func deleteAllNotes () {
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-//        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//        do {
-//            try persistentContainer.viewContext.execute(batchDeleteRequest)
-//            save()
-//        } catch {
-//            persistentContainer.viewContext.rollback()
-//        }
-//    }
+    func deleteAllNotes () {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NoteEntity")
+        let batchRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try persistentContainer.viewContext.execute(batchRequest)
+        } catch {
+            persistentContainer.viewContext.rollback()
+        }
+    }
     
     func deleteFood(_ food: Food) {
         persistentContainer.viewContext.delete(food)

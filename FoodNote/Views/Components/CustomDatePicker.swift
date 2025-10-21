@@ -15,6 +15,7 @@ struct CustomDatePicker: View {
     var completionLeftToggle: ( () -> ())?
     var completionRightToggle: ( () -> ())?
     @State var convertToDateToggleView: Bool = false
+    @State var viewNotes: Bool = false
     var reloadDelegate: DataReloadDelegate?
     var body: some View {
         if !convertToDateToggleView {
@@ -50,50 +51,70 @@ struct CustomDatePicker: View {
 
 extension CustomDatePicker {
     var mainToggle: some View {
-        HStack {
-            Button(action: {
-                let date = Calendar.current.date(byAdding: .day, value: -1, to: self.date)
-                self.date = date ?? Date()
-                completionLeftToggle?()
-            }, label: {
-                Image(systemName: "arrow.left")
-                    .foregroundStyle(Color.indigo)
-                    .shadow(radius: 3)
-            }).padding(.trailing, self.padding)
-                .disabled(!buttonShouldBeActive)
-
-            Button(action: {
-                withAnimation {
-                    convertToDateToggleView = true
-                }
-                withAnimation {
-                    self.opacityIsMuted = true
-                }
-            }, label: {
-                Text(date.formatted(date: .abbreviated, time: .omitted))
-                    .padding(4)
-            }).disabled(!buttonShouldBeActive)
-               
-            
-            .background() {
-                RoundedRectangle(cornerRadius: 5)
-                    .foregroundStyle(Color.lavenderColor)
+        ZStack {
+            HStack {
+                Button(action: {
+                    let date = Calendar.current.date(byAdding: .day, value: -1, to: self.date)
+                    self.date = date ?? Date()
+                    completionLeftToggle?()
+                }, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color.indigo)
+                        .shadow(radius: 3)
+                }).padding(.trailing, self.padding)
+                    .disabled(!buttonShouldBeActive)
+                
+                Button(action: {
+                    withAnimation {
+                        convertToDateToggleView = true
+                    }
+                    withAnimation {
+                        self.opacityIsMuted = true
+                    }
+                }, label: {
+                    Text(date.formatted(date: .abbreviated, time: .omitted))
+                        .padding(4)
+                }).disabled(!buttonShouldBeActive)
+                
+                
+                    .background() {
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundStyle(Color.lavenderColor)
+                    }
+                
+                Button(action: {
+                    let date = Calendar.current.date(byAdding: .day, value: 1, to: self.date)
+                    self.date = date ?? Date()
+                    completionRightToggle?()
+                }, label: {
+                    Image(systemName: "arrow.right")
+                        .foregroundStyle(Color.indigo)
+                        .shadow(radius: 3)
+                }).padding(.leading, self.padding)
+                
             }
+                .foregroundStyle(Color.black).opacity(0.8)
+                .bold()
+                .disabled(!buttonShouldBeActive)
             
-            Button(action: {
-                let date = Calendar.current.date(byAdding: .day, value: 1, to: self.date)
-                self.date = date ?? Date()
-                completionRightToggle?()
-            }, label: {
-                Image(systemName: "arrow.right")
-                    .foregroundStyle(Color.indigo)
-                    .shadow(radius: 3)
-            }).padding(.leading, self.padding)
-        }.preferredColorScheme(.light)
-        .foregroundStyle(Color.black).opacity(0.8)
-            .bold()
-            .disabled(!buttonShouldBeActive)
+            HStack {
+                Spacer()
+                Button {
+                    viewNotes = true
+                } label: {
+                    Image(systemName: "heart.text.clipboard.fill")
+                        .resizable()
+                        .frame(width: 21, height: 25)
+                        .foregroundStyle(LinearGradient(colors: [Color.red, Color.indigo], startPoint: .topTrailing, endPoint: .bottomLeading))
+                }.fullScreenCover(isPresented: $viewNotes) {
+                } content: {
+                    ViewDaysNotes(date: self.date)
+                }
 
+
+            }.padding()
+        }
+        .preferredColorScheme(.light)
     }
 }
 
