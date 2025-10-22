@@ -104,8 +104,8 @@ extension CustomDatePicker {
                 } label: {
                     Image(systemName: "heart.text.clipboard.fill")
                         .resizable()
-                        .frame(width: 21, height: 25)
-                        .foregroundStyle(LinearGradient(colors: [Color.red, Color.indigo], startPoint: .topTrailing, endPoint: .bottomLeading))
+                        .frame(width: 15, height: 20)
+                        .foregroundStyle(LinearGradient(colors: [Color.mint, Color.indigo], startPoint: .topTrailing, endPoint: .bottomLeading))
                 }.fullScreenCover(isPresented: $viewNotes) {
                 } content: {
                     ViewDaysNotes(date: self.date)

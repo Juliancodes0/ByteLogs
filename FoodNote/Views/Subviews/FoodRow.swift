@@ -12,7 +12,7 @@ struct FoodRow: View {
     var callback: ( () -> ()?)?
     let date: Date
     @State var showLineThrough: Bool = false
-    @State var openMealDetails: Bool = false
+//    @State var openMealDetails: Bool = false
     @State var editFood: Bool = false
     @State var editMeal: Bool = false
     @Environment(\.dismiss) var dismiss
@@ -44,12 +44,14 @@ struct FoodRow: View {
             Text("\(food.calories) \(stringForCalories())")
                 .strikethrough(showLineThrough)
             if food.isMeal {
-                Button(action: {
-                    self.openMealDetails = true
-                }, label: {
-                    Image(systemName: "fork.knife.circle.fill")
-                        .strikethrough(showLineThrough)
-                })
+                Image(systemName: "fork.knife.circle.fill")
+                    .strikethrough(showLineThrough)
+//                Button(action: {
+//                    self.openMealDetails = true
+//                }, label: {
+//                    Image(systemName: "fork.knife.circle.fill")
+//                        .strikethrough(showLineThrough)
+//                })
             }
         }.foregroundStyle(Color.black)
         .preferredColorScheme(.light)
@@ -64,7 +66,7 @@ struct FoodRow: View {
         )
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             
-            Button(action: {
+            Button(role: .destructive, action: {
                 withAnimation(.linear(duration: 0.01)) {
                     showLineThrough = true
                 }
@@ -76,13 +78,13 @@ struct FoodRow: View {
                 Text("REMOVE")
                     .bold()
             })
-            
+
             if !self.food.isMeal {
                 Button(action: {
                     self.editFood = true
                 }, label: {
                     Image(systemName: "pencil")
-                }).tint(Color.yellow)
+                }).tint(Color.black)
             }
             
             if self.food.isMeal {
@@ -90,12 +92,12 @@ struct FoodRow: View {
                     self.editMeal = true
                 }, label: {
                     Image(systemName: "pencil")
-                }).tint(Color.yellow)
+                }).tint(Color.black)
             }
         }
-        .sheet(isPresented: $openMealDetails, onDismiss: {}, content: {
-            MealDetails(meal: food as! MealModel)
-        })
+//        .sheet(isPresented: $openMealDetails, onDismiss: {}, content: {
+//            MealDetails(meal: food as! MealModel)
+//        })
         
         .sheet(isPresented: $editFood, onDismiss: {
             callback?()
@@ -124,4 +126,9 @@ struct FoodRow: View {
             callback?()
         }
     }
+}
+
+
+#Preview {
+    HomePgeView(user: UserBasicsManager())
 }

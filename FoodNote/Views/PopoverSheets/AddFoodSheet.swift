@@ -18,8 +18,15 @@ class AddFoodSheetViewModel: ObservableObject {
     func getEverything () {
         let allFoods = CoreDataManager.shared.getAllFoods().map(FoodModel.init)
         let allMeals = CoreDataManager.shared.getAllMeals().map(MealModel.init)
-        self.allFoodsAndMeals = allFoods + allMeals
+        var all: [FoodItemProtocol] = allFoods + allMeals
+        all.removeAll { food in
+            food.date == nil
+        }
+        self.allFoodsAndMeals = all.sorted(by: { foodA, foodB in
+            foodA.date ?? Date() > foodB.date ?? Date()
+        })
     }
+
 }
 
 struct FoodAddBox: View {
@@ -48,6 +55,9 @@ struct FoodAddBox: View {
                     Text("\(foodItem.calories) \(energyUnitString)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
+                    
+//                    Text("\(foodItem.date!.formatted(date: .abbreviated, time: .shortened))")
+//                        .lineLimit(0)
                 }
                 Spacer()
                 Button(action: {
@@ -66,15 +76,11 @@ struct FoodAddBox: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.blue.opacity(0.2))
+                    .fill(Color.blue.opacity(0.44))
+                    .frame(height: 80)
             )
         }.preferredColorScheme(.light)
         .frame(width: 200, height: 100)
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.blue.opacity(0.3))
-        )
-        .shadow(radius: 5)
     }
     private func saveAsFood (date: Date) {
         let manager = CoreDataManager.shared
@@ -146,7 +152,8 @@ struct AddFoodSheet: View {
     @State var aMealWasAdded: Bool = false
     @State var foodSearched: String = ""
     @FocusState var foodSearchFocus: Bool
-    
+//    @State var pulse: CGFloat = 1
+//    @State var pulseTimer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     private var energyUnitString: String {
         switch UnitManager.shared.getUserEnergyPreference() {
         case .cal:
@@ -193,7 +200,7 @@ struct AddFoodSheet: View {
                 if self.foodEditing == nil {
                     ScrollView(.horizontal, showsIndicators: true) {
                         HStack(spacing: 20) {
-                            
+
                             let itemsToShow = foodItemsDisplayed
                                 .sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
                                 .reduce(into: [String: FoodItemProtocol](), { result, foodItem in
@@ -203,7 +210,7 @@ struct AddFoodSheet: View {
                                 })
                                 .values
                                 .sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
-                                .prefix(30)
+                                .prefix(20)
                             
                             ForEach(itemsToShow, id: \.id) { foodItem in
                                 FoodAddBox(foodItem: foodItem, date: self.dateForFood, categoryString: self.$selectedMeal, callbackMethod: {
@@ -229,8 +236,9 @@ struct AddFoodSheet: View {
                     Button {
                         self.viewMeals = true
                     } label: {
-                        Text("Select from meals")
-                            .font(.caption)
+                        Text("Click here to a meal")
+                            .scaleEffect(1.1)
+                            .bold()
                     }
                     .fullScreenCover(isPresented: $viewMeals, onDismiss: {
                         delegate?.reloadData()
@@ -286,7 +294,12 @@ struct AddFoodSheet: View {
                 })
                 
             }
-        }.environment(\.colorScheme, .light)
+        } /*.onReceive(pulseTimer) { _ in
+            withAnimation(.easeInOut(duration: 1)) {
+                pulse = pulse == 1 ? 1.15 : 1
+            }
+        }*/
+        .environment(\.colorScheme, .light)
         .onAppear() {
             viewModel.getAllFoods()
             viewModel.getEverything()
