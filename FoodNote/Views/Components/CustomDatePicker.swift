@@ -102,10 +102,14 @@ extension CustomDatePicker {
                 Button {
                     viewNotes = true
                 } label: {
+                    VStack {
                     Image(systemName: "heart.text.clipboard.fill")
                         .resizable()
                         .frame(width: 15, height: 20)
                         .foregroundStyle(LinearGradient(colors: [Color.mint, Color.indigo], startPoint: .topTrailing, endPoint: .bottomLeading))
+                        Text("Notes")
+                            .foregroundStyle(Color.black).fontWeight(.light).font(.footnote)
+                }
                 }.fullScreenCover(isPresented: $viewNotes) {
                 } content: {
                     ViewDaysNotes(date: self.date)

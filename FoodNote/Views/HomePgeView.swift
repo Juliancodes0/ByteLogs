@@ -398,6 +398,7 @@ extension HomePgeView {
                     showPlusMenu = true
                 }
             }, label: {
+                VStack(spacing: 2) {
                 Image(systemName: "plus")
                     .bold()
                     .padding()
@@ -418,6 +419,9 @@ extension HomePgeView {
                             )
                             .stroke(Color.gray, lineWidth: 1)
                     }
+                    Text("Add options")
+                        .foregroundStyle(Color.black).fontWeight(.light).font(.footnote)
+            }
             })
         }
         .padding(.trailing)
@@ -429,6 +433,7 @@ extension HomePgeView {
             Button(action: {
                 showWeightLog = true
             }, label: {
+                VStack(spacing: 2) {
                 Image(systemName: "chart.xyaxis.line")
                     .bold()
                     .padding()
@@ -449,6 +454,9 @@ extension HomePgeView {
                             )
                             .stroke(Color.gray, lineWidth: 1)
                     }
+                    Text("Logs")
+                        .foregroundStyle(Color.black).fontWeight(.light).font(.footnote)
+                }
             })
         }
         .padding(.leading)
